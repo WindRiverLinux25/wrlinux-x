@@ -141,7 +141,6 @@
     <project name="external/yocto/github.com.dsoprea.pyinotify" remote="base" path="layers/wrlinux-src-dl/git/github.com.dsoprea.pyinotify.git" bare="True"/>
     <project name="external/yocto/github.com.benhoyt.inih" remote="base" path="layers/wrlinux-src-dl/git/github.com.benhoyt.inih.git" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.linux.kernel.git.dhowells.keyutils" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.linux.kernel.git.dhowells.keyutils.git" bare="True"/>
-    <project name="external/yocto/github.com.ARMmbed.mbedtls" remote="base" path="layers/wrlinux-src-dl/git/github.com.ARMmbed.mbedtls.git" bare="True"/>
     <project name="external/yocto/github.com.ofalk.libdnet" remote="base" path="layers/wrlinux-src-dl/git/github.com.ofalk.libdnet.git" bare="True"/>
     <project name="external/yocto/gitlab.freedesktop.org.polkit.polkit" remote="base" path="layers/wrlinux-src-dl/git/gitlab.freedesktop.org.polkit.polkit.git" bare="True"/>
     <project name="external/yocto/codeberg.org.ipmitool.ipmitool" remote="base" path="layers/wrlinux-src-dl/git/codeberg.org.ipmitool.ipmitool" bare="True"/>
