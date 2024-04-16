@@ -247,3 +247,4 @@
     <project name="external/yocto/github.com.containerd.log" remote="base" path="layers/wrlinux-src-dl/git/github.com.containerd.log" bare="True"/>
     <project name="external/yocto/github.com.mitchellh.go-ps" remote="base" path="layers/wrlinux-src-dl/git/github.com.mitchellh.go-ps" bare="True"/>
     <project name="external/yocto/github.com.mxk.go-flowrate" remote="base" path="layers/wrlinux-src-dl/git/github.com.mxk.go-flowrate" bare="True"/>
+    <project name="external/yocto/github.com.eiannone.keyboard" remote="base" path="layers/wrlinux-src-dl/git/github.com.eiannone.keyboard" bare="True"/>
