@@ -254,3 +254,4 @@
     <project name="external/ovp/github.com.mitchellh.reflectwalk" remote="base" path="layers/wrlinux-src-dl/git/github.com.mitchellh.reflectwalk" bare="True"/>
     <project name="external/yocto/github.com.distribution.reference" remote="base" path="layers/wrlinux-src-dl/git/github.com.distribution.reference" bare="True"/>
     <project name="external/yocto/github.com.skratchdot.open-golang" remote="base" path="layers/wrlinux-src-dl/git/github.com.skratchdot.open-golang" bare="True"/>
+    <project name="external/ovp/github.com.hashicorp.go-cleanhttp" remote="base" path="layers/wrlinux-src-dl/git/github.com.hashicorp.go-cleanhttp" bare="True"/>
