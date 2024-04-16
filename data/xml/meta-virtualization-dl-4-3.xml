@@ -249,3 +249,4 @@
     <project name="external/yocto/github.com.mxk.go-flowrate" remote="base" path="layers/wrlinux-src-dl/git/github.com.mxk.go-flowrate" bare="True"/>
     <project name="external/yocto/github.com.eiannone.keyboard" remote="base" path="layers/wrlinux-src-dl/git/github.com.eiannone.keyboard" bare="True"/>
     <project name="external/yocto/github.com.gorilla.websocket" remote="base" path="layers/wrlinux-src-dl/git/github.com.gorilla.websocket" bare="True"/>
+    <project name="external/yocto/github.com.acarl005.stripansi" remote="base" path="layers/wrlinux-src-dl/git/github.com.acarl005.stripansi" bare="True"/>
