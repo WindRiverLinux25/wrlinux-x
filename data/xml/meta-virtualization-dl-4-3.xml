@@ -237,3 +237,4 @@
     <project name="external/yocto/github.com.open-telemetry.opentelemetry-go-contrib" remote="base" path="layers/wrlinux-src-dl/git/github.com.open-telemetry.opentelemetry-go-contrib" bare="True"/>
     <project name="external/yocto/github.com.onsi.gomega" remote="base" path="layers/wrlinux-src-dl/git/github.com.onsi.gomega" bare="True"/>
     <project name="external/yocto/github.com.google.pprof" remote="base" path="layers/wrlinux-src-dl/git/github.com.google.pprof" bare="True"/>
+    <project name="external/yocto/github.com.onsi.ginkgo" remote="base" path="layers/wrlinux-src-dl/git/github.com.onsi.ginkgo" bare="True"/>
