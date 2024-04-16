@@ -241,3 +241,4 @@
     <project name="external/yocto/github.com.go-task.slim-sprig" remote="base" path="layers/wrlinux-src-dl/git/github.com.go-task.slim-sprig" bare="True"/>
     <project name="external/overc/github.com.imdario.mergo" remote="base" path="layers/wrlinux-src-dl/git/github.com.imdario.mergo" bare="True"/>
     <project name="external/yocto/github.com.uber.mock" remote="base" path="layers/wrlinux-src-dl/git/github.com.uber.mock" bare="True"/>
+    <project name="external/yocto/github.com.kubernetes.apiserver" remote="base" path="layers/wrlinux-src-dl/git/github.com.kubernetes.apiserver" bare="True"/>
