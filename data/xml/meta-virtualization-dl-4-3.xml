@@ -252,3 +252,4 @@
     <project name="external/yocto/github.com.acarl005.stripansi" remote="base" path="layers/wrlinux-src-dl/git/github.com.acarl005.stripansi" bare="True"/>
     <project name="external/yocto/github.com.google.gnostic-models" remote="base" path="layers/wrlinux-src-dl/git/github.com.google.gnostic-models" bare="True"/>
     <project name="external/ovp/github.com.mitchellh.reflectwalk" remote="base" path="layers/wrlinux-src-dl/git/github.com.mitchellh.reflectwalk" bare="True"/>
+    <project name="external/yocto/github.com.distribution.reference" remote="base" path="layers/wrlinux-src-dl/git/github.com.distribution.reference" bare="True"/>
