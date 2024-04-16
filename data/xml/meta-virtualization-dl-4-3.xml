@@ -250,3 +250,4 @@
     <project name="external/yocto/github.com.eiannone.keyboard" remote="base" path="layers/wrlinux-src-dl/git/github.com.eiannone.keyboard" bare="True"/>
     <project name="external/yocto/github.com.gorilla.websocket" remote="base" path="layers/wrlinux-src-dl/git/github.com.gorilla.websocket" bare="True"/>
     <project name="external/yocto/github.com.acarl005.stripansi" remote="base" path="layers/wrlinux-src-dl/git/github.com.acarl005.stripansi" bare="True"/>
+    <project name="external/yocto/github.com.google.gnostic-models" remote="base" path="layers/wrlinux-src-dl/git/github.com.google.gnostic-models" bare="True"/>
