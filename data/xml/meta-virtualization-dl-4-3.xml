@@ -245,3 +245,4 @@
     <project name="external/yocto/github.com.r3labs.sse" remote="base" path="layers/wrlinux-src-dl/git/github.com.r3labs.sse" bare="True"/>
     <project name="external/yocto/github.com.otiai10.copy" remote="base" path="layers/wrlinux-src-dl/git/github.com.otiai10.copy" bare="True"/>
     <project name="external/yocto/github.com.containerd.log" remote="base" path="layers/wrlinux-src-dl/git/github.com.containerd.log" bare="True"/>
+    <project name="external/yocto/github.com.mitchellh.go-ps" remote="base" path="layers/wrlinux-src-dl/git/github.com.mitchellh.go-ps" bare="True"/>
