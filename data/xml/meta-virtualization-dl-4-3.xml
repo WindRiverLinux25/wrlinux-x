@@ -236,3 +236,4 @@
     <project name="external/yocto/github.com.secure-systems-lab.go-securesystemslib" remote="base" path="layers/wrlinux-src-dl/git/github.com.secure-systems-lab.go-securesystemslib" bare="True"/>
     <project name="external/yocto/github.com.open-telemetry.opentelemetry-go-contrib" remote="base" path="layers/wrlinux-src-dl/git/github.com.open-telemetry.opentelemetry-go-contrib" bare="True"/>
     <project name="external/yocto/github.com.onsi.gomega" remote="base" path="layers/wrlinux-src-dl/git/github.com.onsi.gomega" bare="True"/>
+    <project name="external/yocto/github.com.google.pprof" remote="base" path="layers/wrlinux-src-dl/git/github.com.google.pprof" bare="True"/>
