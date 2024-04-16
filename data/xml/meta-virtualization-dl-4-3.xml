@@ -238,3 +238,4 @@
     <project name="external/yocto/github.com.onsi.gomega" remote="base" path="layers/wrlinux-src-dl/git/github.com.onsi.gomega" bare="True"/>
     <project name="external/yocto/github.com.google.pprof" remote="base" path="layers/wrlinux-src-dl/git/github.com.google.pprof" bare="True"/>
     <project name="external/yocto/github.com.onsi.ginkgo" remote="base" path="layers/wrlinux-src-dl/git/github.com.onsi.ginkgo" bare="True"/>
+    <project name="external/yocto/github.com.go-task.slim-sprig" remote="base" path="layers/wrlinux-src-dl/git/github.com.go-task.slim-sprig" bare="True"/>
