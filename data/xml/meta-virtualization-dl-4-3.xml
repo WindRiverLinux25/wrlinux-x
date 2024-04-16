@@ -262,3 +262,4 @@
     <project name="external/yocto/github.com.containerd.go-runc" remote="base" path="layers/wrlinux-src-dl/git/github.com.containerd.go-runc" bare="True"/>
     <project name="external/yocto/github.com.go-jose.go-jose" remote="base" path="layers/wrlinux-src-dl/git/github.com.go-jose.go-jose" bare="True"/>
     <project name="external/yocto/github.com.muesli.cancelreader" remote="base" path="layers/wrlinux-src-dl/git/github.com.muesli.cancelreader" bare="True"/>
+    <project name="external/yocto/github.com.containerd.platforms" remote="base" path="layers/wrlinux-src-dl/git/github.com.containerd.platforms" bare="True"/>
