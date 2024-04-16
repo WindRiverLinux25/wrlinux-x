@@ -256,3 +256,4 @@
     <project name="external/yocto/github.com.skratchdot.open-golang" remote="base" path="layers/wrlinux-src-dl/git/github.com.skratchdot.open-golang" bare="True"/>
     <project name="external/ovp/github.com.hashicorp.go-cleanhttp" remote="base" path="layers/wrlinux-src-dl/git/github.com.hashicorp.go-cleanhttp" bare="True"/>
     <project name="external/yocto/github.com.moby.docker-image-spec" remote="base" path="layers/wrlinux-src-dl/git/github.com.moby.docker-image-spec" bare="True"/>
+    <project name="external/ovp/github.com.mitchellh.copystructure" remote="base" path="layers/wrlinux-src-dl/git/github.com.mitchellh.copystructure" bare="True"/>
