@@ -1,6 +1,7 @@
 {
   "meta-anaconda": ["meta-anaconda-dl"],
   "meta-chromium": ["meta-browser-dl-4-3-2"],
+  "meta-clang": ["meta-clang-dl"],
   "meta-cloud-services": ["meta-cloud-services-dl-4-3"],
   "meta-intel": ["meta-intel-dl"],
   "meta-intel-qat": ["meta-intel-qat-dl"],
