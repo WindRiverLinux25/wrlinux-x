@@ -186,3 +186,4 @@
     <project name="external/yocto/github.com.alban.dbus-daemon-proxy" remote="base" path="layers/wrlinux-src-dl/git/github.com.alban.dbus-daemon-proxy" bare="True"/>
     <project name="external/yocto/gitlab.com.ipcalc.ipcalc" remote="base" path="layers/wrlinux-src-dl/git/gitlab.com.ipcalc.ipcalc.git" bare="True"/>
     <project name="external/yocto/github.com.gabime.spdlog" remote="base" path="layers/wrlinux-src-dl/git/github.com.gabime.spdlog.git" bare="True"/>
+    <project name="external/yocto/gitlab.com.iniparser.iniparser" remote="base" path="layers/wrlinux-src-dl/git/gitlab.com.iniparser.iniparser.git" bare="True"/>
