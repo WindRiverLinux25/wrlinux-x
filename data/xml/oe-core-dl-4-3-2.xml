@@ -1,7 +1,6 @@
     <project name="external/yocto/git.infradead.org.mtd-utils" remote="base" path="layers/wrlinux-src-dl/git/git.infradead.org.mtd-utils.git" bare="True"/>
     <project name="external/yocto/git.kernel.dk.blktrace" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.dk.blktrace.git" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.fs.ext2.e2fsprogs" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.fs.ext2.e2fsprogs.git" bare="True"/>
-    <project name="external/yocto/git.kernel.org.pub.scm.linux.kernel.git.cjb.mmc-utils" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.linux.kernel.git.cjb.mmc-utils.git" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.linux.kernel.git.kdave.btrfs-progs" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.linux.kernel.git.kdave.btrfs-progs.git" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.utils.dtc.dtc" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.utils.dtc.dtc.git" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.utils.kernel.kmod.kmod" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.utils.kernel.kmod.kmod.git" bare="True"/>
@@ -147,7 +146,6 @@
     <project name="external/yocto/github.com.asciidoc.asciidoc-py" remote="base" path="layers/wrlinux-src-dl/git/github.com.asciidoc.asciidoc-py" bare="True"/>
     <project name="external/yocto/source.denx.de.u-boot.u-boot" remote="base" path="layers/wrlinux-src-dl/git/source.denx.de.u-boot.u-boot.git" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.network.nfc.neard" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.network.nfc.neard.git" bare="True"/>
-    <project name="external/yocto/github.com.mirror.ncurses" remote="base" path="layers/wrlinux-src-dl/git/github.com.mirror.ncurses.git" bare="True"/>
     <project name="external/yocto/git.yoctoproject.org.sato-icon-theme" remote="base" path="layers/wrlinux-src-dl/git/git.yoctoproject.org.sato-icon-theme.git" bare="True"/>
     <project name="external/yocto/pagure.io.xmlto" remote="base" path="layers/wrlinux-src-dl/git/pagure.io.xmlto.git" bare="True"/>
     <project name="external/yocto/gitlab.freedesktop.org.virgl.virglrenderer" remote="base" path="layers/wrlinux-src-dl/git/gitlab.freedesktop.org.virgl.virglrenderer.git" bare="True"/>
