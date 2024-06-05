@@ -181,3 +181,4 @@
     <project name="external/yocto/github.com.nemtrif.ftest" remote="base" path="layers/wrlinux-src-dl/git/github.com.nemtrif.ftest" bare="True"/>
     <project name="external/yocto/github.com.ARMmbed.mbedtls" remote="base" path="layers/wrlinux-src-dl/git/github.com.ARMmbed.mbedtls.git" bare="True"/>
     <project name="external/yocto/github.com.acpica.acpica" remote="base" path="layers/wrlinux-src-dl/git/github.com.acpica.acpica" bare="True"/>
+    <project name="external/yocto/github.com.ThomasDickey.ncurses-snapshots" remote="base" path="layers/wrlinux-src-dl/git/github.com.ThomasDickey.ncurses-snapshots.git" bare="True"/>
