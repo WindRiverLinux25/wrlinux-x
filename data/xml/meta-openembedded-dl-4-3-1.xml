@@ -99,13 +99,11 @@
     <project name="external/yocto/git.libssh.org.projects.libssh" remote="base" path="layers/wrlinux-src-dl/git/git.libssh.org.projects.libssh.git" bare="True"/>
     <project name="external/yocto/gitlab.freedesktop.org.upower.upower" remote="base" path="layers/wrlinux-src-dl/git/gitlab.freedesktop.org.upower.upower.git" bare="True"/>
     <project name="external/yocto/github.com.inotify-tools.inotify-tools" remote="base" path="layers/wrlinux-src-dl/git/github.com.inotify-tools.inotify-tools" bare="True"/>
-    <project name="external/yocto/github.com.bluesabre.menulibre" remote="base" path="layers/wrlinux-src-dl/git/github.com.bluesabre.menulibre.git" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.network.bridge.bridge-utils" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.network.bridge.bridge-utils.git" bare="True"/>
     <project name="external/yocto/github.com.USCiLab.cereal" remote="base" path="layers/wrlinux-src-dl/git/github.com.USCiLab.cereal.git" bare="True"/>
     <project name="external/yocto/github.com.tianon.gosu" remote="base" path="layers/wrlinux-src-dl/git/github.com.tianon.gosu.git" bare="True"/>
     <project name="external/yocto/git.zx2c4.com.wireguard-tools" remote="base" path="layers/wrlinux-src-dl/git/git.zx2c4.com.wireguard-tools" bare="True"/>
     <project name="external/yocto/github.com.fmtlib.fmt" remote="base" path="layers/wrlinux-src-dl/git/github.com.fmtlib.fmt" bare="True"/>
-    <project name="external/yocto/github.com.ndevilla.iniparser" remote="base" path="layers/wrlinux-src-dl/git/github.com.ndevilla.iniparser.git" bare="True"/>
     <project name="external/yocto/github.com.wxWidgets.wxWidgets" remote="base" path="layers/wrlinux-src-dl/git/github.com.wxWidgets.wxWidgets.git" bare="True"/>
     <project name="external/yocto/github.com.wxWidgets.Catch" remote="base" path="layers/wrlinux-src-dl/git/github.com.wxWidgets.Catch.git" bare="True"/>
     <project name="external/yocto/github.com.wxWidgets.libexpat" remote="base" path="layers/wrlinux-src-dl/git/github.com.wxWidgets.libexpat.git" bare="True"/>
