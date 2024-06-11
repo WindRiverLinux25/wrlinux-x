@@ -1,7 +1,6 @@
     <project name="external/yocto/www.aleph1.co.uk.yaffs2" remote="base" path="layers/wrlinux-src-dl/git/www.aleph1.co.uk.yaffs2" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.linux.kernel.git.jaegeuk.f2fs-tools" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.linux.kernel.git.jaegeuk.f2fs-tools.git" bare="True"/>
     <project name="external/yocto/github.com.engla.keybinder" remote="base" path="layers/wrlinux-src-dl/git/github.com.engla.keybinder.git" bare="True"/>
-    <project name="external/yocto/git.kernel.org.pub.scm.boot.dracut.dracut" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.boot.dracut.dracut.git" bare="True"/>
     <project name="external/yocto/github.com.rhboot.grubby" remote="base" path="layers/wrlinux-src-dl/git/github.com.rhboot.grubby.git" bare="True"/>
     <project name="external/yocto/pagure.io.netcf" remote="base" path="layers/wrlinux-src-dl/git/pagure.io.netcf.git" bare="True"/>
     <project name="external/yocto/github.com.sctp.lksctp-tools" remote="base" path="layers/wrlinux-src-dl/git/github.com.sctp.lksctp-tools.git" bare="True"/>
