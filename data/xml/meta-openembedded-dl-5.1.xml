@@ -102,7 +102,6 @@
     <project name="external/yocto/github.com.USCiLab.cereal" remote="base" path="layers/wrlinux-src-dl/git/github.com.USCiLab.cereal.git" bare="True"/>
     <project name="external/yocto/github.com.tianon.gosu" remote="base" path="layers/wrlinux-src-dl/git/github.com.tianon.gosu.git" bare="True"/>
     <project name="external/yocto/git.zx2c4.com.wireguard-tools" remote="base" path="layers/wrlinux-src-dl/git/git.zx2c4.com.wireguard-tools" bare="True"/>
-    <project name="external/yocto/github.com.fmtlib.fmt" remote="base" path="layers/wrlinux-src-dl/git/github.com.fmtlib.fmt" bare="True"/>
     <project name="external/yocto/github.com.wxWidgets.wxWidgets" remote="base" path="layers/wrlinux-src-dl/git/github.com.wxWidgets.wxWidgets.git" bare="True"/>
     <project name="external/yocto/github.com.wxWidgets.Catch" remote="base" path="layers/wrlinux-src-dl/git/github.com.wxWidgets.Catch.git" bare="True"/>
     <project name="external/yocto/github.com.wxWidgets.libexpat" remote="base" path="layers/wrlinux-src-dl/git/github.com.wxWidgets.libexpat.git" bare="True"/>

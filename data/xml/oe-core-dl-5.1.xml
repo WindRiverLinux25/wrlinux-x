@@ -183,3 +183,4 @@
     <project name="external/yocto/github.com.acpica.acpica" remote="base" path="layers/wrlinux-src-dl/git/github.com.acpica.acpica" bare="True"/>
     <project name="external/yocto/github.com.ThomasDickey.ncurses-snapshots" remote="base" path="layers/wrlinux-src-dl/git/github.com.ThomasDickey.ncurses-snapshots.git" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.utils.mmc.mmc-utils" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.utils.mmc.mmc-utils.git" bare="True"/>
+    <project name="external/yocto/github.com.fmtlib.fmt" remote="base" path="layers/wrlinux-src-dl/git/github.com.fmtlib.fmt" bare="True"/>
