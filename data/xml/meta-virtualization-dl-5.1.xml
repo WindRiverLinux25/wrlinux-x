@@ -141,7 +141,6 @@
     <project name="external/yocto/github.com.magiconair.properties" remote="base" path="layers/wrlinux-src-dl/git/github.com.magiconair.properties" bare="True"/>
     <project name="external/yocto/github.com.docker.compose" remote="base" path="layers/wrlinux-src-dl/git/github.com.docker.compose" bare="True"/>
     <project name="external/yocto/go.googlesource.com.exp" remote="base" path="layers/wrlinux-src-dl/git/go.googlesource.com.exp" bare="True"/>
-    <project name="external/yocto/go.googlesource.com.mod" remote="base" path="layers/wrlinux-src-dl/git/go.googlesource.com.mod" bare="True"/>
     <project name="external/yocto/go.googlesource.com.tools" remote="base" path="layers/wrlinux-src-dl/git/go.googlesource.com.tools" bare="True"/>
     <project name="external/yocto/github.com.go-logr.logr" remote="base" path="layers/wrlinux-src-dl/git/github.com.go-logr.logr" bare="True"/>
     <project name="external/yocto/github.com.go-logr.stdr" remote="base" path="layers/wrlinux-src-dl/git/github.com.go-logr.stdr" bare="True"/>
@@ -223,7 +222,6 @@
     <project name="external/yocto/github.com.notaryproject.notary" remote="base" path="layers/wrlinux-src-dl/git/github.com.notaryproject.notary" bare="True"/>
     <project name="external/yocto/github.com.kubernetes-sigs.structured-merge-diff" remote="base" path="layers/wrlinux-src-dl/git/github.com.kubernetes-sigs.structured-merge-diff" bare="True"/>
     <project name="external/yocto/github.com.grpc-ecosystem.grpc-gateway" remote="base" path="layers/wrlinux-src-dl/git/github.com.grpc-ecosystem.grpc-gateway" bare="True"/>
-    <project name="external/yocto/github.com.grpc-ecosystem.go-grpc-middleware" remote="base" path="layers/wrlinux-src-dl/git/github.com.grpc-ecosystem.go-grpc-middleware" bare="True"/>
     <project name="external/yocto/github.com.secure-systems-lab.go-securesystemslib" remote="base" path="layers/wrlinux-src-dl/git/github.com.secure-systems-lab.go-securesystemslib" bare="True"/>
     <project name="external/yocto/github.com.open-telemetry.opentelemetry-go-contrib" remote="base" path="layers/wrlinux-src-dl/git/github.com.open-telemetry.opentelemetry-go-contrib" bare="True"/>
     <project name="external/yocto/github.com.onsi.gomega" remote="base" path="layers/wrlinux-src-dl/git/github.com.onsi.gomega" bare="True"/>
@@ -232,7 +230,6 @@
     <project name="external/yocto/github.com.go-task.slim-sprig" remote="base" path="layers/wrlinux-src-dl/git/github.com.go-task.slim-sprig" bare="True"/>
     <project name="external/overc/github.com.imdario.mergo" remote="base" path="layers/wrlinux-src-dl/git/github.com.imdario.mergo" bare="True"/>
     <project name="external/yocto/github.com.uber.mock" remote="base" path="layers/wrlinux-src-dl/git/github.com.uber.mock" bare="True"/>
-    <project name="external/yocto/github.com.kubernetes.apiserver" remote="base" path="layers/wrlinux-src-dl/git/github.com.kubernetes.apiserver" bare="True"/>
     <project name="external/yocto/github.com.r3labs.sse" remote="base" path="layers/wrlinux-src-dl/git/github.com.r3labs.sse" bare="True"/>
     <project name="external/yocto/github.com.otiai10.copy" remote="base" path="layers/wrlinux-src-dl/git/github.com.otiai10.copy" bare="True"/>
     <project name="external/yocto/github.com.containerd.log" remote="base" path="layers/wrlinux-src-dl/git/github.com.containerd.log" bare="True"/>
@@ -242,12 +239,10 @@
     <project name="external/yocto/github.com.gorilla.websocket" remote="base" path="layers/wrlinux-src-dl/git/github.com.gorilla.websocket" bare="True"/>
     <project name="external/yocto/github.com.acarl005.stripansi" remote="base" path="layers/wrlinux-src-dl/git/github.com.acarl005.stripansi" bare="True"/>
     <project name="external/yocto/github.com.google.gnostic-models" remote="base" path="layers/wrlinux-src-dl/git/github.com.google.gnostic-models" bare="True"/>
-    <project name="external/ovp/github.com.mitchellh.reflectwalk" remote="base" path="layers/wrlinux-src-dl/git/github.com.mitchellh.reflectwalk" bare="True"/>
     <project name="external/yocto/github.com.distribution.reference" remote="base" path="layers/wrlinux-src-dl/git/github.com.distribution.reference" bare="True"/>
     <project name="external/yocto/github.com.skratchdot.open-golang" remote="base" path="layers/wrlinux-src-dl/git/github.com.skratchdot.open-golang" bare="True"/>
     <project name="external/ovp/github.com.hashicorp.go-cleanhttp" remote="base" path="layers/wrlinux-src-dl/git/github.com.hashicorp.go-cleanhttp" bare="True"/>
     <project name="external/yocto/github.com.moby.docker-image-spec" remote="base" path="layers/wrlinux-src-dl/git/github.com.moby.docker-image-spec" bare="True"/>
-    <project name="external/ovp/github.com.mitchellh.copystructure" remote="base" path="layers/wrlinux-src-dl/git/github.com.mitchellh.copystructure" bare="True"/>
     <project name="external/yocto/github.com.cncf-tags.container-device-interface" remote="base" path="layers/wrlinux-src-dl/git/github.com.cncf-tags.container-device-interface" bare="True"/>
     <project name="external/yocto/github.com.bmizerany.assert" remote="base" path="layers/wrlinux-src-dl/git/github.com.bmizerany.assert" bare="True"/>
     <project name="external/yocto/github.com.containerd.go-runc" remote="base" path="layers/wrlinux-src-dl/git/github.com.containerd.go-runc" bare="True"/>
