@@ -49,7 +49,6 @@
     <project name="external/yocto/github.com.p11-glue.p11-kit" remote="base" path="layers/wrlinux-src-dl/git/github.com.p11-glue.p11-kit" bare="True"/>
     <project name="external/yocto/github.com.cryptodev-linux.cryptodev-linux" remote="base" path="layers/wrlinux-src-dl/git/github.com.cryptodev-linux.cryptodev-linux" bare="True"/>
     <project name="external/yocto/git.yoctoproject.org.pseudo" remote="base" path="layers/wrlinux-src-dl/git/git.yoctoproject.org.pseudo" bare="True"/>
-    <project name="external/yocto/salsa.debian.org.debian.ca-certificates" remote="base" path="layers/wrlinux-src-dl/git/salsa.debian.org.debian.ca-certificates.git" bare="True"/>
     <project name="external/yocto/github.com.besser82.libxcrypt" remote="base" path="layers/wrlinux-src-dl/git/github.com.besser82.libxcrypt.git" bare="True"/>
     <project name="external/yocto/github.com.xrmx.bootchart" remote="base" path="layers/wrlinux-src-dl/git/github.com.xrmx.bootchart.git" bare="True"/>
     <project name="external/yocto/pagure.io.libaio" remote="base" path="layers/wrlinux-src-dl/git/pagure.io.libaio.git" bare="True"/>
