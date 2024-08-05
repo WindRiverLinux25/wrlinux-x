@@ -254,3 +254,4 @@
     <project name="external/yocto/gitlab.com.keycodemap.keycodemapdb" remote="base" path="layers/wrlinux-src-dl/git/gitlab.com.keycodemap.keycodemapdb.git" bare="True"/>
     <project name="external/yocto/github.com.libvirt.libvirt" remote="base" path="layers/wrlinux-src-dl/git/github.com.libvirt.libvirt.git" bare="True"/>
     <project name="external/yocto/github.com.containerd.errdefs" remote="base" path="layers/wrlinux-src-dl/git/github.com.containerd.errdefs" bare="True"/>
+    <project name="external/yocto/github.com.go-viper.mapstructure" remote="base" path="layers/wrlinux-src-dl/git/github.com.go-viper.mapstructure" bare="True"/>
