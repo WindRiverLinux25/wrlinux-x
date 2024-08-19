@@ -184,3 +184,4 @@
     <project name="external/yocto/github.com.gabime.spdlog" remote="base" path="layers/wrlinux-src-dl/git/github.com.gabime.spdlog.git" bare="True"/>
     <project name="external/yocto/github.com.picolibc.picolibc" remote="base" path="layers/wrlinux-src-dl/git/github.com.picolibc.picolibc.git" bare="True"/>
     <project name="external/yocto/github.com.stevegrubb.libcap-ng" remote="base" path="layers/wrlinux-src-dl/git/github.com.stevegrubb.libcap-ng.git" bare="True"/>
+    <project name="external/yocto/github.com.systemd.systemd" remote="base" path="layers/wrlinux-src-dl/git/github.com.systemd.systemd.git" bare="True"/>
