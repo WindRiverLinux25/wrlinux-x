@@ -183,3 +183,4 @@
     <project name="external/yocto/github.com.dracut-ng.dracut-ng" remote="base" path="layers/wrlinux-src-dl/git/github.com.dracut-ng.dracut-ng.git" bare="True"/>
     <project name="external/yocto/github.com.dasbus-project.dasbus" remote="base" path="layers/wrlinux-src-dl/git/github.com.dasbus-project.dasbus.git" bare="True"/>
     <project name="external/yocto/github.com.polkit-org.polkit" remote="base" path="layers/wrlinux-src-dl/git/github.com.polkit-org.polkit.git" bare="True"/>
+    <project name="external/yocto/git.0pointer.net.libatasmart" remote="base" path="layers/wrlinux-src-dl/git/git.0pointer.net.libatasmart.git" bare="True"/>
