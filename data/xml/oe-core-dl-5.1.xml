@@ -67,7 +67,6 @@
     <project name="external/yocto/github.com.KhronosGroup.Vulkan-Loader" remote="base" path="layers/wrlinux-src-dl/git/github.com.KhronosGroup.Vulkan-Loader.git" bare="True"/>
     <project name="external/yocto/github.com.vim.vim" remote="base" path="layers/wrlinux-src-dl/git/github.com.vim.vim.git" bare="True"/>
     <project name="external/yocto/gitlab.freedesktop.org.gstreamer.gst-examples" remote="base" path="layers/wrlinux-src-dl/git/gitlab.freedesktop.org.gstreamer.gst-examples.git" bare="True"/>
-    <project name="external/yocto/github.com.systemd.systemd-stable" remote="base" path="layers/wrlinux-src-dl/git/github.com.systemd.systemd-stable.git" bare="True"/>
     <project name="external/yocto/github.com.troglobit.sysklogd" remote="base" path="layers/wrlinux-src-dl/git/github.com.troglobit.sysklogd.git" bare="True"/>
     <project name="external/yocto/gitlab.freedesktop.org.mesa.piglit" remote="base" path="layers/wrlinux-src-dl/git/gitlab.freedesktop.org.mesa.piglit.git" bare="True"/>
     <project name="external/yocto/github.com.riscv.opensbi" remote="base" path="layers/wrlinux-src-dl/git/github.com.riscv.opensbi.git" bare="True"/>
@@ -157,7 +156,6 @@
     <project name="external/yocto/github.com.NetworkConfiguration.dhcpcd" remote="base" path="layers/wrlinux-src-dl/git/github.com.NetworkConfiguration.dhcpcd" bare="True"/>
     <project name="external/yocto/github.com.di.calver" remote="base" path="layers/wrlinux-src-dl/git/github.com.di.calver" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.libs.libtrace.libtraceevent" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.libs.libtrace.libtraceevent.git" bare="True"/>
-    <project name="external/yocto/anongit.freedesktop.org.git.xorg.driver.xf86-video-intel" remote="base" path="layers/wrlinux-src-dl/git/anongit.freedesktop.org.git.xorg.driver.xf86-video-intel" bare="True"/>
     <project name="external/yocto/github.com.google.wycheproof" remote="base" path="layers/wrlinux-src-dl/git/github.com.google.wycheproof.git" bare="True"/>
     <project name="external/yocto/github.com.ahcbb6.baremetal-helloqemu" remote="base" path="layers/wrlinux-src-dl/git/github.com.ahcbb6.baremetal-helloqemu.git" bare="True"/>
     <project name="external/yocto/github.com.KhronosGroup.Vulkan-ValidationLayers" remote="base" path="layers/wrlinux-src-dl/git/github.com.KhronosGroup.Vulkan-ValidationLayers.git" bare="True"/>
