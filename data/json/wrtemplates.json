@@ -127,25 +127,6 @@
       ]
     },
     {
-      "name": "feature/lat",
-      "require": [
-        "feature/ostree",
-        "feature/chrony"
-      ],
-      "layer_dependencies": [
-        "meta-lat"
-      ]
-    },
-    {
-      "name": "feature/lat-fitimage",
-      "require": [
-        "feature/lat"
-      ],
-      "layer_dependencies": [
-        "meta-lat"
-      ]
-    },
-    {
       "name": "feature/mbim",
       "layer_dependencies": [
         "meta-oe"
@@ -192,7 +173,7 @@
     {    
       "name": "feature/ostree",
       "layer_dependencies": [
-        "meta-lat"
+        "meta-oe"
       ]   
     },
     {
