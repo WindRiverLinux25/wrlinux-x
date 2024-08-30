@@ -186,3 +186,4 @@
     <project name="external/yocto/github.com.stevegrubb.libcap-ng" remote="base" path="layers/wrlinux-src-dl/git/github.com.stevegrubb.libcap-ng.git" bare="True"/>
     <project name="external/yocto/github.com.systemd.systemd" remote="base" path="layers/wrlinux-src-dl/git/github.com.systemd.systemd.git" bare="True"/>
     <project name="external/yocto/gitlab.freedesktop.org.xorg.driver.xf86-video-intel" remote="base" path="layers/wrlinux-src-dl/git/gitlab.freedesktop.org.xorg.driver.xf86-video-intel.git" bare="True"/>
+    <project name="external/yocto/github.com.catchorg.Catch2" remote="base" path="layers/wrlinux-src-dl/git/github.com.catchorg.Catch2.git" bare="True"/>
