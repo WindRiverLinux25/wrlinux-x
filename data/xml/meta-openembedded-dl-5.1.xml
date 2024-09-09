@@ -186,3 +186,4 @@
     <project name="external/yocto/github.com.open-telemetry.opentelemetry-cpp" remote="base" path="layers/wrlinux-src-dl/git/github.com.open-telemetry.opentelemetry-cpp" bare="True"/>
     <project name="external/yocto/github.com.jupp0r.prometheus-cpp" remote="base" path="layers/wrlinux-src-dl/git/github.com.jupp0r.prometheus-cpp" bare="True"/>
     <project name="external/yocto/github.com.Microsoft.vcpkg" remote="base" path="layers/wrlinux-src-dl/git/github.com.Microsoft.vcpkg" bare="True"/>
+    <project name="external/yocto/github.com.microsoft.GSL" remote="base" path="layers/wrlinux-src-dl/git/github.com.microsoft.GSL" bare="True"/>
