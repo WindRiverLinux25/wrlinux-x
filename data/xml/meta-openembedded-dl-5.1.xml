@@ -185,3 +185,4 @@
     <project name="external/yocto/git.0pointer.net.libatasmart" remote="base" path="layers/wrlinux-src-dl/git/git.0pointer.net.libatasmart.git" bare="True"/>
     <project name="external/yocto/github.com.open-telemetry.opentelemetry-cpp" remote="base" path="layers/wrlinux-src-dl/git/github.com.open-telemetry.opentelemetry-cpp" bare="True"/>
     <project name="external/yocto/github.com.jupp0r.prometheus-cpp" remote="base" path="layers/wrlinux-src-dl/git/github.com.jupp0r.prometheus-cpp" bare="True"/>
+    <project name="external/yocto/github.com.Microsoft.vcpkg" remote="base" path="layers/wrlinux-src-dl/git/github.com.Microsoft.vcpkg" bare="True"/>
