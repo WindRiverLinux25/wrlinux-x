@@ -1,3 +1,4 @@
+    <project name="layers/meta-openembedded-dl-5.1" remote="base" path="layers/meta-openembedded-dl"/>
     <project name="external/yocto/www.aleph1.co.uk.yaffs2" remote="base" path="layers/wrlinux-src-dl/git/www.aleph1.co.uk.yaffs2" bare="True"/>
     <project name="external/yocto/git.kernel.org.pub.scm.linux.kernel.git.jaegeuk.f2fs-tools" remote="base" path="layers/wrlinux-src-dl/git/git.kernel.org.pub.scm.linux.kernel.git.jaegeuk.f2fs-tools.git" bare="True"/>
     <project name="external/yocto/github.com.engla.keybinder" remote="base" path="layers/wrlinux-src-dl/git/github.com.engla.keybinder.git" bare="True"/>

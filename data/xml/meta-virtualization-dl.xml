@@ -1,3 +1,4 @@
+    <project name="layers/meta-virtualization-dl-5.1" remote="base" path="layers/meta-virtualization-dl"/>
     <project name="external/yocto/github.com.coreos.go-systemd" remote="base" path="layers/wrlinux-src-dl/git/github.com.coreos.go-systemd.git" bare="True"/>
     <project name="external/yocto/github.com.grpc.grpc-go" remote="base" path="layers/wrlinux-src-dl/git/github.com.grpc.grpc-go.git" bare="True"/>
     <project name="external/yocto/github.com.gorilla.mux" remote="base" path="layers/wrlinux-src-dl/git/github.com.gorilla.mux.git" bare="True"/>

@@ -1,3 +1,4 @@
+    <project name="layers/meta-anaconda-dl" remote="base" path="layers/meta-anaconda-dl"/>
     <project name="external/yocto/github.com.rhinstaller.python-simpleline" remote="base" path="layers/wrlinux-src-dl/git/github.com.rhinstaller.python-simpleline" bare="True"/>
     <project name="external/yocto/github.com.release-engineering.productmd" remote="base" path="layers/wrlinux-src-dl/git/github.com.release-engineering.productmd" bare="True"/>
     <project name="external/yocto/github.com.rhinstaller.dasbus" remote="base" path="layers/wrlinux-src-dl/git/github.com.rhinstaller.dasbus.git" bare="True"/>
