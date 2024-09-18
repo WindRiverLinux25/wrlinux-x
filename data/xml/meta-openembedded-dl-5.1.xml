@@ -189,3 +189,4 @@
     <project name="external/yocto/github.com.microsoft.GSL" remote="base" path="layers/wrlinux-src-dl/git/github.com.microsoft.GSL" bare="True"/>
     <project name="external/yocto/github.com.opentracing.opentracing-cpp" remote="base" path="layers/wrlinux-src-dl/git/github.com.opentracing.opentracing-cpp.git" bare="True"/>
     <project name="external/yocto/github.com.aio-libs.multidict" remote="base" path="layers/wrlinux-src-dl/git/github.com.aio-libs.multidict" bare="True"/>
+    <project name="external/yocto/github.com.pytest-dev.pytest-mock" remote="base" path="layers/wrlinux-src-dl/git/github.com.pytest-dev.pytest-mock" bare="True"/>
