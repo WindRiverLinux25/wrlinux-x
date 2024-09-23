@@ -189,3 +189,4 @@
     <project name="external/yocto/gitlab.freedesktop.org.xorg.driver.xf86-video-intel" remote="base" path="layers/wrlinux-src-dl/git/gitlab.freedesktop.org.xorg.driver.xf86-video-intel.git" bare="True"/>
     <project name="external/yocto/github.com.catchorg.Catch2" remote="base" path="layers/wrlinux-src-dl/git/github.com.catchorg.Catch2.git" bare="True"/>
     <project name="external/yocto/github.com.wolfpld.tracy" remote="base" path="layers/wrlinux-src-dl/git/github.com.wolfpld.tracy.git" bare="True"/>
+    <project name="external/yocto/github.com.DMTF.libspdm" remote="base" path="layers/wrlinux-src-dl/git/github.com.DMTF.libspdm.git" bare="True"/>
