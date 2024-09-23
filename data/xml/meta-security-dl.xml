@@ -1,3 +1,4 @@
     <project name="layers/meta-security-dl" remote="base" path="layers/meta-security-dl"/>
     <project name="external/yocto/github.com.OpenSCAP.openscap" remote="base" path="layers/wrlinux-src-dl/git/github.com.OpenSCAP.openscap.git" bare="True"/>
     <project name="external/yocto/github.com.ComplianceAsCode.content" remote="base" path="layers/wrlinux-src-dl/git/github.com.ComplianceAsCode.content.git" bare="True"/>
+    <project name="external/yocto/gitlab.com.gsasl.libgssglue" remote="base" path="layers/wrlinux-src-dl/git/gitlab.com.gsasl.libgssglue.git" bare="True"/>
