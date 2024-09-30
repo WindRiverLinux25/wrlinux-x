@@ -175,6 +175,18 @@
         "meta-oe"
       ]
     },
+    {
+      "name": "feature/sbom-2",
+      "layer_dependencies": [
+        "wr-sbom"
+      ]
+    },
+    {
+      "name": "feature/sbom-3",
+      "layer_dependencies": [
+        "wr-sbom"
+      ]
+    },
     {    
       "name": "feature/ostree",
       "layer_dependencies": [
