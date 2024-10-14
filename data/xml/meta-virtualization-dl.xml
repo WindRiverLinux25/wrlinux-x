@@ -59,7 +59,6 @@
     <project name="external/yocto/go.googlesource.com.crypto" remote="base" path="layers/wrlinux-src-dl/git/go.googlesource.com.crypto" bare="True"/>
     <project name="external/yocto/go.googlesource.com.net" remote="base" path="layers/wrlinux-src-dl/git/go.googlesource.com.net" bare="True"/>
     <project name="external/yocto/go.googlesource.com.sync" remote="base" path="layers/wrlinux-src-dl/git/go.googlesource.com.sync" bare="True"/>
-    <project name="external/yocto/go.googlesource.com.sys" remote="base" path="layers/wrlinux-src-dl/git/go.googlesource.com.sys" bare="True"/>
     <project name="external/yocto/go.googlesource.com.term" remote="base" path="layers/wrlinux-src-dl/git/go.googlesource.com.term" bare="True"/>
     <project name="external/yocto/github.com.gotestyourself.gotest.tools" remote="base" path="layers/wrlinux-src-dl/git/github.com.gotestyourself.gotest.tools" bare="True"/>
     <project name="external/yocto/github.com.Azure.go-ansiterm" remote="base" path="layers/wrlinux-src-dl/git/github.com.Azure.go-ansiterm" bare="True"/>
