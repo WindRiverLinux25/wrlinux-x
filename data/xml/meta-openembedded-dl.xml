@@ -191,3 +191,4 @@
     <project name="external/yocto/github.com.opentracing.opentracing-cpp" remote="base" path="layers/wrlinux-src-dl/git/github.com.opentracing.opentracing-cpp.git" bare="True"/>
     <project name="external/yocto/github.com.aio-libs.multidict" remote="base" path="layers/wrlinux-src-dl/git/github.com.aio-libs.multidict" bare="True"/>
     <project name="external/yocto/github.com.asottile.covdefaults" remote="base" path="layers/wrlinux-src-dl/git/github.com.asottile.covdefaults.git" bare="True"/>
+    <project name="external/yocto/github.com.libhugetlbfs.libhugetlbfs" remote="base" path="layers/wrlinux-src-dl/git/github.com.libhugetlbfs.libhugetlbfs.git" bare="True"/>
