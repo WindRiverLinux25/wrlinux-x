@@ -112,9 +112,9 @@ buildtools_setup() {
 		BUILDTOOLSBRANCH="${BASEBRANCH}"
 	fi
 
-	#qt6 require at least gcc9+
+	# The tensorflow requires at least gcc10+
 	gcc_cur_ver=$(gcc -dumpfullversion -dumpversion 2>/dev/null)
-	required_ver=9.3.1
+	required_ver=10.3.0
 
 	# check whether host gcc version less than $required_ver
 	if [ ! "$(printf '%s\n' "$required_ver" "$gcc_cur_ver" | sort -V | head -n1)" = "$required_ver" ]; then
