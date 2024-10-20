@@ -3,3 +3,4 @@
     <project name="external/yocto/github.com.libbpf.bpftool" remote="base" path="layers/wrlinux-src-dl/git/github.com.libbpf.bpftool.git" bare="True"/>
     <project name="external/yocto/github.com.libbpf.blazesym" remote="base" path="layers/wrlinux-src-dl/git/github.com.libbpf.blazesym.git" bare="True"/>
     <project name="external/yocto/github.com.iovisor.bpftrace" remote="base" path="layers/wrlinux-src-dl/git/github.com.iovisor.bpftrace" bare="True"/>
+<project name="layers/meta-clang-gitshallow-dl-5.1" remote="base" path="layers/wrlinux-src-dl/meta-clang-gitshallow-dl"/>
