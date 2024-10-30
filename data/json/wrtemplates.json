@@ -98,6 +98,12 @@
       ]
     },
     {
+      "name": "feature/intel-x86-dev",
+      "require": [
+        "feature/tpm2"
+      ]
+    },
+    {
       "name": "feature/ipmi",
       "layer_dependencies": [
         "meta-oe",
