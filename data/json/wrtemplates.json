@@ -7,6 +7,12 @@
       ]
     },
     {
+      "name": "feature/bpftrace",
+      "layer_dependencies": [
+        "meta-clang"
+      ]
+    },
+    {
       "name": "feature/buildah",
       "require": [
         "feature/podman"
