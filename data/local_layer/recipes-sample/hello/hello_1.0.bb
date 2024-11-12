@@ -1,6 +1,5 @@
 DESCRIPTION = "This package contains the simple Hello World program."
-LICENSE = "windriver"
-LICENSE_FLAGS = "commercial_windriver"
+LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://hello.c;beginline=1;endline=3;md5=3e8f741b049bec8146c81a2667ab4b45"
 
 SECTION = "sample"
