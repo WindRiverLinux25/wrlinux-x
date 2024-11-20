@@ -21,6 +21,7 @@ BUILDTOOLS_EXT_VERSION=${BUILDTOOLS_EXT_VERSION:-10.22.33.6b}
 # Special windshare folders to search
 BUILDTOOLS_FOLDERS="WRLinux-CD-Core"
 
+BUILDTOOLS_BASEURL="${BUILDTOOLS_BASEURL:-$BASEURL}"
 
 # Where to install the build tools
 BUILDTOOLS="${BUILDTOOLS:-bin/buildtools}"
@@ -151,7 +152,7 @@ buildtools_setup() {
 		buildtools_version=$BUILDTOOLS_EXT_VERSION
 	fi
 
-	# Buildtools location can change -- this is the path on top of the BASEURL
+	# Buildtools location can change -- this is the path on top of the BUILDTOOLS_BASEURL
 	BUILDTOOLS_REMOTE="${BUILDTOOLS_REMOTE:-${buildtools}-standalone-${buildtools_version}}"
 
 	# Where to cache the git fetch
@@ -189,12 +190,12 @@ buildtools_setup() {
 		retries=0
 		duration=5
 		for i in {1..5} ; do
-			if ! setup_check_url "${BASEURL}/${BUILDTOOLS_REMOTE}" ; then
+			if ! setup_check_url "${BUILDTOOLS_BASEURL}/${BUILDTOOLS_REMOTE}" ; then
 				ORIG_BT_REMOTE=${BUILDTOOLS_REMOTE}
 				# Additional places to search...
 				for folder in ${BUILDTOOLS_FOLDERS} layers/buildtools; do
 					NEW_REMOTE=${folder}/${BUILDTOOLS_REMOTE}
-					if setup_check_url "${BASEURL}/${NEW_REMOTE}" ; then
+					if setup_check_url "${BUILDTOOLS_BASEURL}/${NEW_REMOTE}" ; then
 						BUILDTOOLS_REMOTE=${NEW_REMOTE}
 					fi
 				done
@@ -212,7 +213,7 @@ buildtools_setup() {
 		if [ $retries -eq 5 ]; then
 			echo "Unable to find ${BUILDTOOLS_REMOTE}.  Search path:">&2
 			for folder in ${BUILDTOOLS_FOLDERS} layers/buildtools; do
-				echo " ${BASEURL}/${folder}/${BUILDTOOLS_REMOTE}" >&2
+				echo " ${BUILDTOOLS_BASEURL}/${folder}/${BUILDTOOLS_REMOTE}" >&2
 			done
 			return 1
 		fi
@@ -229,8 +230,8 @@ buildtools_setup() {
 		duration=5
 		ret=0
 		for i in {1..5} ; do
-			echo "${BASEURL}/${BUILDTOOLS_REMOTE}"
-			(cd ${BUILDTOOLS_GIT} && git fetch -f -n -u "${BASEURL}/${BUILDTOOLS_REMOTE}" $local_name)
+			echo "${BUILDTOOLS_BASEURL}/${BUILDTOOLS_REMOTE}"
+			(cd ${BUILDTOOLS_GIT} && git fetch -f -n -u "${BUILDTOOLS_BASEURL}/${BUILDTOOLS_REMOTE}" $local_name)
 			ret=$?
 			if [ $ret -eq 0 ] || [ $ret -eq 130 ]; then
 				break
@@ -243,14 +244,14 @@ buildtools_setup() {
 		done
 
 		if [ $retries -eq 5 ] || [ $ret -eq 130 ]; then
-			echo "Error fetching buildtools repository ${BASEURL}/${BUILDTOOLS_REMOTE}" >&2
+			echo "Error fetching buildtools repository ${BUILDTOOLS_BASEURL}/${BUILDTOOLS_REMOTE}" >&2
 			return 1
 		fi
 		trap - INT
 		# Set a flag so we know where the fetch was from...
 		(
 			cd ${BUILDTOOLS_GIT}
-			git config "local.${BUILDTOOLS_REF}.url" "${BASEURL}/${BUILDTOOLS_REMOTE}"
+			git config "local.${BUILDTOOLS_REF}.url" "${BUILDTOOLS_BASEURL}/${BUILDTOOLS_REMOTE}"
 			git config "local.${BUILDTOOLS_REF}.path" "${BUILDTOOLS_REMOTE}"
 			git config local.last.ref "${BUILDTOOLS_REF}"
 			git checkout "${BUILDTOOLS_REF}"
