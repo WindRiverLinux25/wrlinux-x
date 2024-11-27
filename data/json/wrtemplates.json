@@ -372,6 +372,12 @@
       "require": [
          "feature/readonly-root"
       ]
+    },
+    {
+      "name": "feature/openvino",
+      "layer_dependencies": [
+        "meta-openvino"
+      ]
     }
   ]
 }
