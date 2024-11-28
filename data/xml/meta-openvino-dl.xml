@@ -1,2 +1,1 @@
-    <project name="layers/meta-openvino-dl" remote="base" path="layers/meta-openvino-dl"/>
 <project name="layers/meta-openvino-gitshallow-dl-5.1" remote="base" path="layers/wrlinux-src-dl/meta-openvino-gitshallow-dl"/>
