@@ -1697,8 +1697,18 @@ class Setup():
             if os.path.exists(path) and utils_setup.is_dl_layer(path):
                 cmd = [self.tools['git'], 'status', '--porcelain']
                 dirty = subprocess.check_output(cmd, cwd=path)
-                cmd = [self.tools['git'], 'diff-index', 'm/master']
-                commit = subprocess.check_output(cmd, cwd=path)
+                cmd = [self.tools['git'], 'branch', '-r']
+                # Check whether m/master is present
+                brs = subprocess.check_output(cmd, cwd=path).decode('utf-8')
+                commit = ''
+                for br in brs.split('\n'):
+                    br = br.strip()
+                    if br.startswith('m/master '):
+                        commit = 'canrun'
+                        break
+                if commit:
+                    cmd = [self.tools['git'], 'diff-index', 'm/master']
+                    commit = subprocess.check_output(cmd, cwd=path)
                 if not (dirty or commit):
                     path_git = os.path.join(path, '.git')
                     path_git_real = os.path.realpath(path_git)
