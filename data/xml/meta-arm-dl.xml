@@ -1,0 +1,1 @@
+    <project name="layers/meta-arm-gitshallow-dl-5.1" remote="base" path="layers/wrlinux-src-dl/meta-arm-gitshallow-dl"/>
