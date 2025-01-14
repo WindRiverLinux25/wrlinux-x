@@ -166,11 +166,29 @@ parse_arguments() {
 }
 
 check_using_buildtools_cert() {
-    for arg in "$@" ; do
-        if [ "$arg" = "--use-buildtools-cert" ]; then
-            eval USE_BUILDTOOLS_CERT=true
-        fi
-    done
+	for arg in "$@" ; do
+		if [ "$arg" = "--use-buildtools-cert" ]; then
+			eval USE_BUILDTOOLS_CERT=true
+		fi
+	done
+}
+
+check_if_safe_directory_set() {
+	if [ "^*$" == "$1" ]; then
+		if git config --get-all safe.directory | grep "^*$" 2>&1 >/dev/null; then
+			return 0
+		fi
+	else
+		set -f
+		for path in $(git config --get-all safe.directory | grep "*$"); do
+			safe_dir=$(realpath $(dirname $path))
+			if [ "$safe_dir" == "$1" ]; then
+				return 0
+			fi
+		done
+		set +f
+	fi
+	return 1
 }
 
 trap shutdown_handler INT
@@ -299,21 +317,40 @@ if [ $help -ne 1 ]; then
 		fi
 	fi
 
-	if ! (git config --get-all safe.directory | grep "^\*$" 2>&1 >/dev/null) \
-		&& ([[ "$REMOTEURL" = /* ]] || [[ "$REMOTEURL" = "file://"* ]]);then
+	if ([[ "$REMOTEURL" = /* ]] || [[ "$REMOTEURL" = "file://"* ]]); then
 		remote_url=$REMOTEURL
 		if [[ "$remote_url" = "file://"* ]]; then
 			remote_url=${remote_url:7}
 		fi
-
 		current_user_euid=$(id -u)
 		remoteurl_owner_euid=$(stat -c %u $remote_url)
-		if [ "$current_user_euid" != "$remoteurl_owner_euid" ];then
-			echo "ERROR: git cannot access directories owned by someone other than the current." >&2
-			echo "ERROR: You need run the following command to avoid setup failures:" >&2
-			echo "ERROR: $ git config --global --add safe.directory \"*\"" >&2
-			echo "ERROR: Refer: https://github.com/git/git/commit/f4aa8c8bb11dae6e769cd930565173808cbb69c8" >&2
-			exit 1
+		if [ "$current_user_euid" != "$remoteurl_owner_euid" ]; then
+			host_git_ver=$(git version | awk '{printf $3}')
+			required_git_ver=2.46.0
+			safe_dir=$(realpath $(dirname $remote_url))
+
+			if [ ! "$(printf '%s\n' "$required_git_ver" "$host_git_ver" | sort -V | head -n1)" = "$required_git_ver" ]; then
+				if !(check_if_safe_directory_set "^*$"); then
+					echo "ERROR: git cannot access directories owned by someone other than the current." >&2
+					echo "ERROR: You need run the following command to avoid setup failures:" >&2
+					echo "ERROR: $ git config --global --add safe.directory \"*\"" >&2
+					echo "ERROR: Refer: https://github.com/git/git/commit/f4aa8c8bb11dae6e769cd930565173808cbb69c8" >&2
+					echo "ERROR: If you prefer to set like following command, you need to upgrade host git to 2.46.0+" >&2
+					echo "ERROR: $ git config --global --add safe.directory \"$safe_dir/*\"" >&2
+					echo "ERROR: Refer: https://github.com/git/git/commit/313eec177ad010048b399d6fd14de871b517f7e3" >&2
+					exit 1
+				fi
+			else
+				if !(check_if_safe_directory_set "^*$") && !(check_if_safe_directory_set "$safe_dir"); then
+					echo "ERROR: git cannot access directories owned by someone other than the current." >&2
+					echo "ERROR: You need run one of the following commands to avoid setup failures:" >&2
+					echo "ERROR: $ git config --global --add safe.directory \"$safe_dir/*\"" >&2
+					echo "ERROR: $ git config --global --add safe.directory \"*\"" >&2
+					echo "ERROR: Refer: https://github.com/git/git/commit/f4aa8c8bb11dae6e769cd930565173808cbb69c8" >&2
+					echo "ERROR: Refer: https://github.com/git/git/commit/313eec177ad010048b399d6fd14de871b517f7e3" >&2
+					exit 1
+				fi
+			fi
 		fi
 	fi
 
