@@ -15,8 +15,8 @@
 
 # Download, install and load the buildtools tarball (as needed)
 
-BUILDTOOLS_VERSION=${BUILDTOOLS_VERSION:-10.24.52.0}
-BUILDTOOLS_EXT_VERSION=${BUILDTOOLS_EXT_VERSION:-10.24.52.0}
+BUILDTOOLS_VERSION=${BUILDTOOLS_VERSION:-10.25.07.0}
+BUILDTOOLS_EXT_VERSION=${BUILDTOOLS_EXT_VERSION:-10.25.07.0}
 
 # Special windshare folders to search
 BUILDTOOLS_FOLDERS="WRLinux-CD-Core"
@@ -135,8 +135,9 @@ buildtools_setup() {
 		BUILDTOOLS_TYPE=extended
 	fi
 
+	# Choose buildtools extended as default
 	if [ -z "${BUILDTOOLS_TYPE}" ]; then
-		BUILDTOOLS_TYPE=basic
+		BUILDTOOLS_TYPE=extended
 	fi
 
 	if [ basic != "${BUILDTOOLS_TYPE}" ] && [ extended != "${BUILDTOOLS_TYPE}" ]; then
