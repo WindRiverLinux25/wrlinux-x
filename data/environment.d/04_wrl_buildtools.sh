@@ -148,6 +148,7 @@ buildtools_setup() {
 	if [ basic = "${BUILDTOOLS_TYPE}" ]; then
 		buildtools=buildtools
 		buildtools_version=$BUILDTOOLS_VERSION
+		echo -e "\nWarning: The option --buildtools-type=\"basic\" is deprecated, and will be removed in next release\n"
 	else
 		buildtools=buildtools-extended
 		buildtools_version=$BUILDTOOLS_EXT_VERSION
