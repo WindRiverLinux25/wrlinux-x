@@ -92,6 +92,7 @@ class Argparse_Wrl(Argparse_Setup):
         self.base_args.add_argument('--password', help='Specify default password for download')
         self.base_args.add_argument('--accept-eula', metavar="ACCEPT", help='Accept End User License Agreement (yes|no)')
         self.base_args.add_argument('--no-anspass', action='store_true', help='Do not use anspass to save the user name and password')
+        self.base_args.add_argument('--send-log', help='Agree send setup log to windriver (yes|no)')
 
     def add_list_options(self):
         Argparse_Setup.add_list_options(self)

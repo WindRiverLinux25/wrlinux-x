@@ -191,6 +191,123 @@ check_if_safe_directory_set() {
 	return 1
 }
 
+calculate_setup_time() {
+	start_time=$1
+	end_time=$2
+	runtime=$((end_time - start_time))
+	hours=$((runtime / 3600))
+	minutes=$(( (runtime % 3600) / 60 ))
+	seconds=$((runtime % 60))
+	echo $hours"h"$minutes"m"$seconds"s"
+}
+
+write_metrics_into_log() {
+	setupcommand=$1
+	setuptime=$2
+	osinfo=$(cat /etc/os-release)
+	archinfo=$(uname -m)
+	echo "" >> $LOGFILE
+	echo "========== Metric Info ==========" >> $LOGFILE
+	echo "Setup Command: $setupcommand" >> $LOGFILE
+	echo "Remote URL of wrlinux-x: $REMOTEURL" >> $LOGFILE
+	echo "Basebranch of wrlinux-x: $BASEBRANCH" >> $LOGFILE
+	echo "Setup Time: $setuptime" >> $LOGFILE
+	echo "OS Info:" >> $LOGFILE
+	echo "$osinfo" >> $LOGFILE
+	echo "Arch Info: $archinfo" >> $LOGFILE
+}
+
+generate_tmp_log() {
+	tmpfile=$(mktemp)
+	line1="Subject: WRLinux Setup Failure Log"
+	line2=""
+	cp $LOGFILE $tmpfile
+	#Insert Subject: line to pass the subject line check of git-send-email
+	sed -i "1i $line1\n$line2" $tmpfile
+	 #Remove possible sensitive info in the log
+	sed -i -e "s#$BASEDIR#PATH_OF_WRLINUX-X#g" $tmpfile
+	sed -i -e "s#$PWD#/PATH_OF_PROJECT_DIR#g" $tmpfile
+	sed -i -e "s#$(whoami)#WHOAMI#g" $tmpfile
+	sed -i -e "s#$(hostname)#HOSTNAME#g" $tmpfile
+	echo $tmpfile
+}
+
+send_log() {
+	if ! git send-email --to lpd-prt-wco@windriver.com $1; then
+		echo "Send mail to windriver failed, please check if you have set correct config for git sendmail" >&2
+		echo "Refer: https://git-scm.com/docs/git-send-email" >&2
+	fi
+	rm -rf $1
+}
+
+check_if_need_to_send_log() {
+	retcode=$1
+	# setup success, don't ask user
+	if [[ "$retcode" -eq "0" ]];then
+		return 1
+	fi
+	# SIGINT received, don't ask user
+	if [[ "$retcode" -eq "130"  || "$retcode" -eq "99" ]];then
+		return 1
+	fi
+	# if invalue argument is passed, don't ask user
+	if grep -q "unrecognized arguments:" $LOGFILE; then
+		return 1
+	fi
+	return 0
+}
+
+sendlog_askuser() {
+	if [ "$SENDLOG" == "yes" ];then
+		tmplog=$(generate_tmp_log)
+		send_log $tmplog
+	elif [ "$SENDLOG" == "no" ];then
+		:
+	else
+		read -t 5 -p "Would you like to send setup log to WindRiver ? - yes/no/read " accept
+		case ${accept} in
+			[yY][eE][sS])
+				tmplog=$(generate_tmp_log)
+				send_log $tmplog
+				;;
+			[nN][oO])
+				:
+				;;
+			[rR] | [rR][eE][aA][dD])
+				# Prefer 'less' if we have it, otherwise fall back to more
+				tmplog=$(generate_tmp_log)
+				if which less >/dev/null 2>&1 ; then
+					cat $tmplog | less -P"Type 'q' when done."
+				else
+					cat $tmplog | more
+				fi
+				rm -rf $tmplog
+				;;
+			*)
+				if [ "$accept" != "" ];then
+					echo "Only yes, no and read are accepted." >&2
+				else
+					echo "Without input in 5s, taken as no" >&2
+				fi
+				;;
+		esac
+	fi
+}
+
+create_log_file() {
+	logdir="$PWD/config/log"
+	mkdir -p "$logdir"
+	logfile=$(date +%Y%m%d%H%M%S).log
+	touch "$logdir"/"$logfile"
+	cd "$logdir" && ln -sf "$logfile" setup-latest.log && cd - 1>/dev/null || exit 1
+	echo "$logdir/$logfile"
+}
+
+LOGFILE=$(create_log_file)
+STARTTIME=$(date +%s)
+ENDTIME=
+SETUPCMD="$@"
+
 trap shutdown_handler INT
 
 # Setup the minimal defaults first..
@@ -200,6 +317,7 @@ BASEDIR=$(readlink -f "$(dirname "$0")")
 # Argument parsing, define a limited set of args
 setup_add_arg --base-url BASEURL keep
 setup_add_arg --base-branch BASEBRANCH keep
+setup_add_arg --send-log SENDLOG keep
 
 help=0
 parse_arguments "$@"
@@ -237,6 +355,11 @@ if [ "${BASEURL:0:1}" != '/' ]; then
 		echo >&2
 		exit 1
 	fi
+fi
+
+if [[ "$SENDLOG" != "yes"  &&  "$SENDLOG" != "no" && "$SENDLOG" != "" ]] ;then
+    echo "Only yes/no are accepted for --send-log" >&2
+    exit 1
 fi
 
 git_cmd="git --git-dir=$BASEDIR/.git"
@@ -354,15 +477,27 @@ if [ $help -ne 1 ]; then
 		fi
 	fi
 
+	exec 3>&1 4>&2
+	exec > >(tee -a $LOGFILE) 2>&1
 	for func in "${ADDFUNCS[@]}"; do
 		$func
 		rc=$?
 		if [ $rc -ne 0 ]; then
 			echo "Stopping: an error occurred in $func." >&2
 			shutdown
+			exec 1>&3 2>&4
+			exec 3>&- 4>&-
+			ENDTIME=$(date +%s)
+			setuptime=$(calculate_setup_time $STARTTIME $ENDTIME)
+			write_metrics_into_log "$SETUPCMD" $setuptime
+			if check_if_need_to_send_log $rc;then
+				sendlog_askuser
+			fi
 			exit $rc
 		fi
 	done
+	exec 1>&3 2>&4
+	exec 3>&- 4>&-
 
 	# Configure the current directory so repo works seemlessly
 	add_gitconfig "user.name" "${GIT_USERNAME}"
@@ -413,11 +548,19 @@ for func in "${EXPORTFUNCS[@]}"; do
 done
 
 trap - INT
+
 # Switch to the python script
-${BASEDIR}/${CMD} "${PASSARGS[@]}"
+${BASEDIR}/${CMD} "${PASSARGS[@]}" $LOGFILE
 rc=$?
 
 shutdown
+
+ENDTIME=$(date +%s)
+setuptime=$(calculate_setup_time $STARTTIME $ENDTIME)
+write_metrics_into_log "$SETUPCMD" $setuptime
+if check_if_need_to_send_log $rc;then
+	sendlog_askuser
+fi
 
 # Preserve the return code from the python script
 exit $rc

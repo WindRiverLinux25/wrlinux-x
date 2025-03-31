@@ -207,24 +207,15 @@ class Setup():
         logger.debug("setup.py finished (ret=%s)" % (ret))
         sys.exit(ret)
 
-    def start_file_logging(self):
-        log_dir = os.path.join(self.conf_dir, self.class_log_dir)
-        if not os.path.exists(log_dir):
-            os.makedirs(log_dir)
-
-        log_file = '%s/%s.log' % (log_dir, time.strftime('%Y%m%d%H%M%S', time.localtime()))
+    def start_file_logging(self, log_file):
         logger_setup.setup_logging_file(log_file)
 
-        # Create symlink setup-latest.log
-        loglink = os.path.join(os.path.dirname(log_file), 'setup-latest.log')
-        try:
-            os.unlink(loglink)
-        except OSError as exc:
-            if exc.errno != errno.ENOENT:
-                raise
-        os.symlink(os.path.basename(log_file), loglink)
-
     def main(self, orig_args):
+        logfile = orig_args[-1]
+        orig_args = orig_args[:-1]
+
+        self.start_file_logging(logfile)
+
         parser = Argparse_Wrl(self)
         # We want to default to help mode lacking any args.
         if not orig_args or not orig_args[1:]:
@@ -233,7 +224,6 @@ class Setup():
         self.setup_args = " ".join(orig_args[1:])
         self.extra_group_keys = parser.extra_group_keys
 
-        self.start_file_logging()
 
         logger.debug('REPO_URL = %s' % self.repo_url)
         logger.debug('REPO_BRANCH = %s' % self.repo_rev)
@@ -2153,4 +2143,8 @@ if __name__ == '__main__':
         x.main(sys.argv)
     except KeyboardInterrupt:
         logger.warning("Aborted by user, will terminate this setup.")
+        sys.exit(99)
+    except Exception as esc:
+        import traceback
+        traceback.print_exc()
         sys.exit(1)
