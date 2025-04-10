@@ -206,15 +206,17 @@ write_metrics_into_log() {
 	setuptime=$2
 	osinfo=$(cat /etc/os-release)
 	archinfo=$(uname -m)
-	echo "" >> $LOGFILE
-	echo "========== Metric Info ==========" >> $LOGFILE
-	echo "Setup Command: $setupcommand" >> $LOGFILE
-	echo "Remote URL of wrlinux-x: $REMOTEURL" >> $LOGFILE
-	echo "Basebranch of wrlinux-x: $BASEBRANCH" >> $LOGFILE
-	echo "Setup Time: $setuptime" >> $LOGFILE
-	echo "OS Info:" >> $LOGFILE
-	echo "$osinfo" >> $LOGFILE
-	echo "Arch Info: $archinfo" >> $LOGFILE
+cat <<EOF >> $LOGFILE
+
+========== Metric Info ==========
+Setup Command: $setupcommand
+Remote URL of wrlinux-x: $REMOTEURL
+Basebranch of wrlinux-x: $BASEBRANCH
+Setup Time: $setuptime
+OS Info:
+$osinfo
+Arch Info: $archinfo
+EOF
 }
 
 generate_tmp_log() {
