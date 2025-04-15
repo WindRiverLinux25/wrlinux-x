@@ -235,9 +235,15 @@ generate_tmp_log() {
 }
 
 send_log() {
-	if ! git send-email --to lpd-prt-wco@windriver.com $1; then
-		echo "Send mail to windriver failed, please check if you have set correct config for git sendmail" >&2
-		echo "Refer: https://git-scm.com/docs/git-send-email" >&2
+	LOGMAIL="lpd-prt-wco@windriver.com"
+
+	if [ -n "${INTERNEL_TEST_LOGMAIL}" ]; then
+		LOGMAIL="${INTERNEL_TEST_LOGMAIL}"
+	fi
+
+	if ! git send-email --to $LOGMAIL $1; then
+		echo "WARNING: Send setup log to windriver failed, please ensure git-email is installed and has correct configuration" >&2
+		echo "WARNING: Refer: https://git-scm.com/docs/git-send-email" >&2
 	fi
 	rm -rf $1
 }
