@@ -1,1 +1,1 @@
-<project name="layers/meta-selinux-gitshallow-dl-5.1" remote="base" path="layers/wrlinux-src-dl/meta-selinux-gitshallow-dl"/>
+    <project name="layers/meta-selinux-gitshallow-dl-5.2" remote="base" path="layers/wrlinux-src-dl/meta-selinux-gitshallow-dl"/>

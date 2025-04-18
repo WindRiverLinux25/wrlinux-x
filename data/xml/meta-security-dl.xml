@@ -1,2 +1,2 @@
     <project name="layers/meta-security-dl" remote="base" path="layers/meta-security-dl"/>
-<project name="layers/meta-security-gitshallow-dl-5.1" remote="base" path="layers/wrlinux-src-dl/meta-security-gitshallow-dl"/>
+    <project name="layers/meta-security-gitshallow-dl-5.2" remote="base" path="layers/wrlinux-src-dl/meta-security-gitshallow-dl"/>

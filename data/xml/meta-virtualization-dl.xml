@@ -1,2 +1,2 @@
-    <project name="layers/meta-virtualization-dl-5.1" remote="base" path="layers/meta-virtualization-dl"/>
-<project name="layers/meta-virtualization-gitshallow-dl-5.1" remote="base" path="layers/wrlinux-src-dl/meta-virtualization-gitshallow-dl"/>
+    <project name="layers/meta-virtualization-dl-5.2" remote="base" path="layers/meta-virtualization-dl"/>
+    <project name="layers/meta-virtualization-gitshallow-dl-5.2" remote="base" path="layers/wrlinux-src-dl/meta-virtualization-gitshallow-dl"/>
