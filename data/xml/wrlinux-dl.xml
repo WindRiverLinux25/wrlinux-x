@@ -1,1 +1,2 @@
 <project name="layers/wrlinux-gitshallow-dl-5.1" remote="base" path="layers/wrlinux-src-dl/wrlinux-gitshallow-dl"/>
+<project name="layers/wrlinux-dl" remote="base" path="layers/wrlinux-dl"/>
