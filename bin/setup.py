@@ -81,7 +81,6 @@ class Setup():
         self.base_branch = os.getenv('OE_BASEBRANCH')
         self.buildtools_branch = os.getenv('OE_BUILDTOOLS_BRANCH')
         self.buildtools_remote = os.getenv('OE_BUILDTOOLS_REMOTE')
-        self.another_buildtools_remote = os.getenv('OE_ANOTHER_BUILDTOOLS_REMOTE')
 
         # Real project or a mirror?
         self.mirror = False
@@ -456,8 +455,6 @@ class Setup():
                 # Adjust the location of the buildtools (was based on the original base_url)
                 if self.buildtools_remote:
                     self.buildtools_remote = ws_base_folder + '/' + self.buildtools_remote
-                if self.another_buildtools_remote:
-                    self.another_buildtools_remote = ws_base_folder + '/' + self.another_buildtools_remote
             else:
                 logger.debug('No Windshare configuration detected.')
         else:
@@ -1186,7 +1183,7 @@ class Setup():
                     fbase.close()
 
         if self.mirror == True and self.buildtools_branch:
-            for bt in (self.buildtools_remote, self.another_buildtools_remote):
+            for bt in (self.buildtools_remote):
                 if bt:
                     self.xml_lines_out.append(add_xml_tag('buildtools', bt, 'base', bt, self.buildtools_branch))
 

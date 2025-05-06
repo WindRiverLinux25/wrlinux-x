@@ -15,8 +15,7 @@
 
 # Download, install and load the buildtools tarball (as needed)
 
-BUILDTOOLS_VERSION=${BUILDTOOLS_VERSION:-10.25.07.0}
-BUILDTOOLS_EXT_VERSION=${BUILDTOOLS_EXT_VERSION:-10.25.07.0}
+BUILDTOOLS_EXT_VERSION=${BUILDTOOLS_EXT_VERSION:-10.25.17.0}
 
 # Special windshare folders to search
 BUILDTOOLS_FOLDERS="WRLinux-lts-25-Core"
@@ -35,8 +34,6 @@ if [ "$SDKARCH" != "x86_64" ]; then
 fi
 
 setup_add_arg --buildtools-branch BUILDTOOLSBRANCH keep
-
-setup_add_arg --buildtools-type BUILDTOOLS_TYPE keep
 
 setup_add_func buildtools_setup
 
@@ -112,46 +109,8 @@ buildtools_setup() {
 		BUILDTOOLSBRANCH="${BASEBRANCH}"
 	fi
 
-	# The tensorflow requires at least gcc10+
-	gcc_cur_ver=$(gcc -dumpfullversion -dumpversion 2>/dev/null)
-	required_ver=10.3.0
-
-	# check whether host gcc version less than $required_ver
-	if [ ! "$(printf '%s\n' "$required_ver" "$gcc_cur_ver" | sort -V | head -n1)" = "$required_ver" ]; then
-		if [ basic = "${BUILDTOOLS_TYPE}" ]; then
-			echo -e "\nWarning: The version of host gcc is too low to support c++14 standard. It may cause some packages such as doxygen-native fail to build with basic buildtools.\n"
-		fi
-
-		if [ -z "${BUILDTOOLS_TYPE}" ]; then
-			BUILDTOOLS_TYPE=extended
-		fi
-	fi
-
-	# On the build server with older gcc, rerun setup may make
-	# buildtools different from the first run, check if gcc is
-	# provided by extended buildtools to fix the gap
-	if [ $(which gcc 2>&1 | grep "buildtools-extended-standalone") ] && [ -z "${BUILDTOOLS_TYPE}" ]; then
-		BUILDTOOLS_TYPE=extended
-	fi
-
-	# Choose buildtools extended as default
-	if [ -z "${BUILDTOOLS_TYPE}" ]; then
-		BUILDTOOLS_TYPE=extended
-	fi
-
-	if [ basic != "${BUILDTOOLS_TYPE}" ] && [ extended != "${BUILDTOOLS_TYPE}" ]; then
-		echo "Wrong argument \"${BUILDTOOLS_TYPE}\" for option --buildtools-type. Supported arguments: basic, extended." >&2
-		return 1
-	fi
-
-	if [ basic = "${BUILDTOOLS_TYPE}" ]; then
-		buildtools=buildtools
-		buildtools_version=$BUILDTOOLS_VERSION
-		echo -e "\nWarning: The option --buildtools-type=\"basic\" is deprecated, and will be removed in next release\n"
-	else
-		buildtools=buildtools-extended
-		buildtools_version=$BUILDTOOLS_EXT_VERSION
-	fi
+	buildtools=buildtools-extended
+	buildtools_version=$BUILDTOOLS_EXT_VERSION
 
 	# Buildtools location can change -- this is the path on top of the BUILDTOOLS_BASEURL
 	BUILDTOOLS_REMOTE="${BUILDTOOLS_REMOTE:-${buildtools}-standalone-${buildtools_version}}"
@@ -353,12 +312,5 @@ buildtools_export() {
 
 	export OE_BUILDTOOLS_BRANCH=${BUILDTOOLSBRANCH}
 	export OE_BUILDTOOLS_REMOTE=${BUILDTOOLS_REMOTE}
-	if [ basic = "${BUILDTOOLS_TYPE}" ]; then
-		export OE_ANOTHER_BUILDTOOLS_REMOTE=`echo ${BUILDTOOLS_REMOTE} | sed -e "s,buildtools-standalone-,buildtools-extended-standalone-," \
-			| sed -e "s,${BUILDTOOLS_VERSION},${BUILDTOOLS_EXT_VERSION},"`
-	else
-		export OE_ANOTHER_BUILDTOOLS_REMOTE=`echo ${BUILDTOOLS_REMOTE} | sed -e "s,buildtools-extended-standalone-,buildtools-standalone-," \
-			| sed -e "s,${BUILDTOOLS_EXT_VERSION},${BUILDTOOLS_VERSION},"`
-	fi
 	return 0
 }
