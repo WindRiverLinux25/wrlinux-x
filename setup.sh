@@ -165,14 +165,6 @@ parse_arguments() {
 	done
 }
 
-check_using_buildtools_cert() {
-	for arg in "$@" ; do
-		if [ "$arg" = "--use-buildtools-cert" ]; then
-			eval USE_BUILDTOOLS_CERT=true
-		fi
-	done
-}
-
 check_if_safe_directory_set() {
 	if [ "^*$" == "$1" ]; then
 		if git config --get-all safe.directory | grep "^*$" 2>&1 >/dev/null; then
@@ -410,7 +402,6 @@ fi
 # extensions
 help=0
 parse_arguments "$@"
-check_using_buildtools_cert "$@"
 
 if [ $help -ne 1 ]; then
 	# Before doing anything else, error out if the project directory
