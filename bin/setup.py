@@ -1183,9 +1183,8 @@ class Setup():
                     fbase.close()
 
         if self.mirror == True and self.buildtools_branch:
-            for bt in (self.buildtools_remote):
-                if bt:
-                    self.xml_lines_out.append(add_xml_tag('buildtools', bt, 'base', bt, self.buildtools_branch))
+            if self.buildtools_remote:
+                self.xml_lines_out.append(add_xml_tag('buildtools', self.buildtools_remote, 'base', self.buildtools_remote, self.buildtools_branch))
 
         def process_specified_dl_layers(specified_dl_layers):
             """
