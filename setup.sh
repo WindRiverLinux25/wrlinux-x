@@ -227,71 +227,48 @@ generate_tmp_log() {
 }
 
 send_log() {
-	LOGMAIL="lpd-prt-wco@windriver.com"
+	tmplog=$(generate_tmp_log)
 
 	if [ -n "${INTERNEL_TEST_LOGMAIL}" ]; then
 		LOGMAIL="${INTERNEL_TEST_LOGMAIL}"
 	fi
 
-	if ! git send-email --to $LOGMAIL $1; then
+	if [ -z "${LOGMAIL}" ]; then
+		LOGMAIL="WRL-build-feedback@windriver.com"
+	fi
+
+	if ! git send-email --to $LOGMAIL $tmplog; then
 		echo "WARNING: Send setup log to windriver failed, please ensure git-email is installed and has correct configuration" >&2
 		echo "WARNING: Refer: https://git-scm.com/docs/git-send-email" >&2
 	fi
-	rm -rf $1
+	rm -rf $tmplog
 }
 
 check_if_need_to_send_log() {
+	sendlog="0"
+	for arg in $SETUPCMD ; do
+		if [ "$arg" = "--send-log" ]; then
+			sendlog="1"
+			break
+		fi
+	done
+	if [[ "$sendlog" -eq "0" ]]; then
+		return 1
+	fi
 	retcode=$1
-	# setup success, don't ask user
-	if [[ "$retcode" -eq "0" ]];then
+	# setup success, don't send log
+	if [[ "$retcode" -eq "0" ]]; then
 		return 1
 	fi
-	# SIGINT received, don't ask user
-	if [[ "$retcode" -eq "130"  || "$retcode" -eq "99" ]];then
+	# SIGINT received, don't send log
+	if [[ "$retcode" -eq "130"  || "$retcode" -eq "99" ]]; then
 		return 1
 	fi
-	# if invalue argument is passed, don't ask user
+	# if invalue argument is passed, don't send log
 	if grep -q "unrecognized arguments:" $LOGFILE; then
 		return 1
 	fi
 	return 0
-}
-
-sendlog_askuser() {
-	if [ "$SENDLOG" == "yes" ];then
-		tmplog=$(generate_tmp_log)
-		send_log $tmplog
-	elif [ "$SENDLOG" == "no" ];then
-		:
-	else
-		read -t 5 -p "Would you like to send setup log to WindRiver ? - yes/no/read " accept
-		case ${accept} in
-			[yY][eE][sS])
-				tmplog=$(generate_tmp_log)
-				send_log $tmplog
-				;;
-			[nN][oO])
-				:
-				;;
-			[rR] | [rR][eE][aA][dD])
-				# Prefer 'less' if we have it, otherwise fall back to more
-				tmplog=$(generate_tmp_log)
-				if which less >/dev/null 2>&1 ; then
-					cat $tmplog | less -P"Type 'q' when done."
-				else
-					cat $tmplog | more
-				fi
-				rm -rf $tmplog
-				;;
-			*)
-				if [ "$accept" != "" ];then
-					echo "Only yes, no and read are accepted." >&2
-				else
-					echo "Without input in 5s, taken as no" >&2
-				fi
-				;;
-		esac
-	fi
 }
 
 create_log_file() {
@@ -317,7 +294,7 @@ BASEDIR=$(readlink -f "$(dirname "$0")")
 # Argument parsing, define a limited set of args
 setup_add_arg --base-url BASEURL keep
 setup_add_arg --base-branch BASEBRANCH keep
-setup_add_arg --send-log SENDLOG keep
+setup_add_arg --log-mail LOGMAIL keep
 
 help=0
 parse_arguments "$@"
@@ -355,11 +332,6 @@ if [ "${BASEURL:0:1}" != '/' ]; then
 		echo >&2
 		exit 1
 	fi
-fi
-
-if [[ "$SENDLOG" != "yes"  &&  "$SENDLOG" != "no" && "$SENDLOG" != "" ]] ;then
-    echo "Only yes/no are accepted for --send-log" >&2
-    exit 1
 fi
 
 git_cmd="git --git-dir=$BASEDIR/.git"
@@ -490,7 +462,7 @@ if [ $help -ne 1 ]; then
 			setuptime=$(calculate_setup_time $STARTTIME $ENDTIME)
 			write_metrics_into_log "$SETUPCMD" $setuptime
 			if check_if_need_to_send_log $rc;then
-				sendlog_askuser
+				send_log
 			fi
 			exit $rc
 		fi
@@ -558,7 +530,7 @@ ENDTIME=$(date +%s)
 setuptime=$(calculate_setup_time $STARTTIME $ENDTIME)
 write_metrics_into_log "$SETUPCMD" $setuptime
 if check_if_need_to_send_log $rc;then
-	sendlog_askuser
+	send_log
 fi
 
 # Preserve the return code from the python script
