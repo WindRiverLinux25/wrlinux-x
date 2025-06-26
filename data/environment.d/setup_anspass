@@ -133,7 +133,7 @@ anspass_setup() {
 	fi
 
 	# Has anspass been started before?
-	if [ -d ${PWD}/bin/.anspass ]; then
+	if [ -d ${PWD}/bin/.anspass ] && [ -n "$(ls -A ${PWD}/bin/.anspass)" ]; then
 		anspass_start
 		rc=$?
 		if [ $rc != 0 ]; then
