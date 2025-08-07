@@ -22,21 +22,6 @@
       ]
     },
     {
-      "name": "feature/chromium",
-      "layer_dependencies": [
-        "meta-chromium"
-      ]
-    },
-    {
-      "name": "feature/chromium-web-kiosk",
-      "require": [
-        "feature/chromium"
-      ],
-      "layer_dependencies": [
-        "meta-chromium"
-      ]
-    },
-    {
       "name": "feature/chrony",
       "layer_dependencies": [
         "meta-networking"
