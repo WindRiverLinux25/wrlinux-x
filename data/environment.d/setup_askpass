@@ -115,6 +115,34 @@ if sys.argv[1] == '--dump':
     s.close()
     sys.exit(0)
 
+def get_opposite_question(question):
+    import re
+    from urllib.parse import quote, unquote
+
+    m = re.search(r"([a-zA-Z][a-zA-Z0-9+.-]*)://([^' ]+)", question)
+    if not m:
+        return ""
+    else:
+        scheme, rest = m.groups()
+        authority = rest.split('/', 1)[0]
+        parts = authority.split('@')
+        if len(parts) < 2:
+           return ""
+        else:
+            username = '@'.join(parts[:-1])
+            host = parts[-1]
+
+            if unquote(username) != username:
+                new_username = unquote(username)
+            else:
+                new_username = quote(username)
+
+            new_authority = f"{new_username}@{host}"
+            new_rest = rest.replace(authority, new_authority, 1)
+            new_url = f"{scheme}://{new_rest}"
+            new_question = question.replace(m.group(0), new_url)
+            return new_question
+
 s = socket.socket(socket.AF_UNIX)
 s.connect(sock_name)
 s.send(('q' + sys.argv[1]).encode())
@@ -167,6 +195,14 @@ s = socket.socket(socket.AF_UNIX)
 s.connect(sock_name)
 s.send(('s' + question + '\n' + 'A'+ result).encode())
 s.close()
+
+if question.startswith('Password') or question.endswith('password: '):
+    new_question = get_opposite_question(question)
+    if new_question:
+        s = socket.socket(socket.AF_UNIX)
+        s.connect(sock_name)
+        s.send(('s' + new_question + '\n' + 'A'+ result).encode())
+        s.close()
 
 s = socket.socket(socket.AF_UNIX)
 s.connect(sock_name)
