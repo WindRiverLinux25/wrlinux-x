@@ -204,14 +204,41 @@ calculate_setup_time() {
 write_metrics_into_log() {
 	setupcommand=$1
 	setuptime=$2
-	osinfo=$(cat /etc/os-release)
+	osinfo=$(cat /etc/os-release | sed 's/^/    /')
 	archinfo=$(uname -m)
+	topcommit=$(cd $BASEDIR; git rev-parse HEAD)
+	cleanrepo_warning=""
+	if [ -n "$(cd $BASEDIR; git status --porcelain)" ]; then
+		cleanrepo_warning="WARNING: wrlinux-x is not clean repo."
+	fi
+	localcommit_warning=""
+	localcommit_count=$(cd $BASEDIR; git rev-list HEAD ^@{u} --count)
+	if [ "$localcommit_count" -gt "0" ]; then
+		localcommit_warning="WARNING: There are $localcommit_count local commits in wrlinux-x, top commit of remote origin HEAD: $(cd $BASEDIR; git rev-parse @{u})"
+	fi
+
 cat <<EOF >> $LOGFILE
 
 ========== Metric Info ==========
 Setup Command: $setupcommand
 Remote URL of wrlinux-x: $REMOTEURL
 Basebranch of wrlinux-x: $BASEBRANCH
+Top Commit: $topcommit
+EOF
+
+if [ -n "$cleanrepo_warning" ]; then
+cat <<EOF >> $LOGFILE
+$cleanrepo_warning
+EOF
+fi
+
+if [ -n "$localcommit_warning" ]; then
+cat <<EOF >> $LOGFILE
+$localcommit_warning
+EOF
+fi
+
+cat <<EOF >> $LOGFILE
 Setup Time: $setuptime
 OS Info:
 $osinfo
@@ -515,6 +542,7 @@ export LANG='en_US.UTF-8'
 # Pass the computed url and branch to ${cmd}
 export OE_BASEURL=${BASEURL}
 export OE_BASEBRANCH=${BASEBRANCH}
+export OE_BASEDIR=${BASEDIR}
 
 for func in "${EXPORTFUNCS[@]}"; do
 	$func

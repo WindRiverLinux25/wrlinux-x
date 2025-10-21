@@ -79,6 +79,7 @@ class Setup():
         # Pull in the defaults from the environment (set by setup.sh)
         self.base_url = os.getenv('OE_BASEURL')
         self.base_branch = os.getenv('OE_BASEBRANCH')
+        self.base_dir = os.getenv('OE_BASEDIR')
         self.buildtools_branch = os.getenv('OE_BUILDTOOLS_BRANCH')
         self.buildtools_remote = os.getenv('OE_BUILDTOOLS_REMOTE')
 
@@ -1653,7 +1654,26 @@ class Setup():
         except:
             logger.plain('Updated project configuration')
             # Command failed -- so self.default_xml changed...
-            cmd = [self.tools['git'], 'commit', '-q', '-m', 'Configuration change - %s' % (self.setup_args), '--'] + filelist
+            remote_url = subprocess.check_output([self.tools['git'], 'config', 'remote.origin.url'], cwd=self.base_dir).decode('utf-8').strip()
+            top_commit = subprocess.check_output([self.tools['git'], 'rev-parse','HEAD'], cwd=self.base_dir).decode('utf-8').strip()
+            if subprocess.check_output([self.tools['git'], 'status', '--porcelain'], cwd=self.base_dir).decode('utf-8').strip():
+                cleanrepo_warning = "WARNING: wrlinux-x is not clean repo."
+            else:
+                cleanrepo_warning = ""
+            localcommit_count = subprocess.check_output([self.tools['git'], 'rev-list', 'HEAD', '^@{u}', '--count'], cwd=self.base_dir).decode('utf-8').strip()
+            if int(localcommit_count) > 0:
+                localcommit_warning = "WARNING: There are %s local commits in wrlinux-x, top commit of remote origin HEAD: %s" % (localcommit_count, subprocess.check_output([self.tools['git'], 'rev-parse', '@{u}'], cwd=self.base_dir).decode('utf-8').strip())
+            else:
+                localcommit_warning = ""
+            commit_msg = f"""\
+Remote URL of wrlinux-x: {remote_url}
+Basebranch of wrlinux-x: {self.base_branch}
+Top Commit: {top_commit}"""
+            if cleanrepo_warning:
+                commit_msg =  commit_msg + "\n" + cleanrepo_warning
+            if localcommit_warning:
+                commit_msg =  commit_msg + "\n" + localcommit_warning
+            cmd = [self.tools['git'], 'commit', '-q', '-m', 'Configuration change - %s' % (self.setup_args), '-m', commit_msg, '--'] + filelist
             utils_setup.run_cmd(cmd, environment=self.env, cwd=self.project_dir)
 
         logger.debug('Done')
