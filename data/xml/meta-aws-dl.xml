@@ -1,1 +1,1 @@
-    <project name="layers/meta-aws-gitshallow-dl-5.2" remote="base" path="layers/wrlinux-src-dl/meta-aws-gitshallow-dl"/>
+    <project name="layers/meta-aws-gitshallow-dl-5.2.1" remote="base" path="layers/wrlinux-src-dl/meta-aws-gitshallow-dl"/>
