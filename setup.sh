@@ -315,10 +315,29 @@ create_log_file() {
 	echo "$logdir/$logfile"
 }
 
+mask_user_pass() {
+	masked_cmd=""
+	while [ $# -gt 0 ]; do
+		case "$1" in
+			--user=*)
+				masked_cmd="$masked_cmd --user=***"
+				;;
+			--password=*)
+				masked_cmd="$masked_cmd --password=***"
+				;;
+			*)
+				masked_cmd="$masked_cmd $1"
+				;;
+		esac
+		shift
+	done
+	echo "${masked_cmd# }"
+}
+
 LOGFILE=$(create_log_file)
 STARTTIME=$(date +%s)
 ENDTIME=
-SETUPCMD="$@"
+SETUPCMD=$(mask_user_pass $@)
 
 trap shutdown_handler INT
 
