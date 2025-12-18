@@ -42,7 +42,9 @@ askpass_setup() {
         fi
     fi
 
-	export WRL_ASKPASS_SOCKET=${PWD}/bin/.setup_askpass
+	if [ -z "$WRL_ASKPASS_SOCKET" ]; then
+		export WRL_ASKPASS_SOCKET=${PWD}/bin/.setup_askpass
+	fi
 
 	# Cleanup any old instances
 	${BASEDIR}/data/environment.d/setup_askpass --quit >/dev/null 2>&1
