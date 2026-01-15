@@ -175,7 +175,7 @@ class ApplyProjectinfo(object):
         try:
            logger.info("Cloning wrlinux-x")
            if self.setup['clean-repo'] == "False":
-              logger.warning("Original wrlinux-x is not clean repo, those changes will not be included in this setup")
+              logger.warning("Original wrlinux-x is not a clean repo, those changes will not be included in this setup")
 
            if self.setup['remote-commit'] != self.setup['top-commit']:
               target_topcomit = self.setup['remote-commit']

@@ -209,7 +209,7 @@ write_metrics_into_log() {
 	topcommit=$(cd $BASEDIR; git rev-parse HEAD)
 	cleanrepo_warning=""
 	if [ -n "$(cd $BASEDIR; git status --porcelain)" ]; then
-		cleanrepo_warning="WARNING: wrlinux-x is not clean repo."
+		cleanrepo_warning="WARNING: wrlinux-x is not a clean repo."
 	fi
 	localcommit_warning=""
 	localcommit_count=$(cd $BASEDIR; git rev-list HEAD ^@{u} --count)

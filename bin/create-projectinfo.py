@@ -263,7 +263,7 @@ class CreateProjectinfo(object):
                     match_branch = re.match(r'Basebranch of wrlinux-x: (.+)', line)
                     match_topcommit = re.match(r'Top Commit: (.+)', line)
                     match_remote_topcommit = re.match(r'.*top commit of remote origin HEAD: (.+)', line)
-                    match_unclean_repo = re.match(r'WARNING: wrlinux-x is not clean repo.', line) 
+                    match_unclean_repo = re.match(r'WARNING: wrlinux-x is not a clean repo.', line)
                     if match_command:
                         json_data['setup']['command'] = match_command.group(1).strip()
                     if match_url:

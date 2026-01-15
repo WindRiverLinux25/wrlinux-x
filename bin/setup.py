@@ -1657,7 +1657,7 @@ class Setup():
             remote_url = subprocess.check_output([self.tools['git'], 'config', 'remote.origin.url'], cwd=self.base_dir).decode('utf-8').strip()
             top_commit = subprocess.check_output([self.tools['git'], 'rev-parse','HEAD'], cwd=self.base_dir).decode('utf-8').strip()
             if subprocess.check_output([self.tools['git'], 'status', '--porcelain'], cwd=self.base_dir).decode('utf-8').strip():
-                cleanrepo_warning = "WARNING: wrlinux-x is not clean repo."
+                cleanrepo_warning = "WARNING: wrlinux-x is not a clean repo."
             else:
                 cleanrepo_warning = ""
             localcommit_count = subprocess.check_output([self.tools['git'], 'rev-list', 'HEAD', '^@{u}', '--count'], cwd=self.base_dir).decode('utf-8').strip()
