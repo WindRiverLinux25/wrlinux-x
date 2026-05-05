@@ -224,3 +224,25 @@ def create_symlinks(srclist, destdir):
         raise
     finally:
         os.chdir(saved_cwd)
+
+def get_current_rcpl(gitdir):
+    cmd = 'git branch --show-current'
+    maybe_brs = []
+    current_branch = subprocess.check_output(cmd, cwd=gitdir, shell=True).decode('utf-8').strip()
+    if '_RCPL' in current_branch:
+        return current_branch
+    cmd = 'git rev-parse %s' % current_branch
+    current_commit_id = subprocess.check_output(cmd, cwd=gitdir, shell=True).decode('utf-8').strip()
+    cmd = 'git branch -r | grep _RCPL | grep %s' % current_branch
+    rcpl_branches = subprocess.check_output(cmd, cwd=gitdir, shell=True).decode('utf-8').strip()
+    logger.debug('rcpl_branches: %s' % rcpl_branches)
+    for br in rcpl_branches.split('\n'):
+        cmd = 'git rev-parse %s' % br
+        commit_id = subprocess.check_output(cmd, cwd=gitdir, shell=True).decode('utf-8').strip()
+        if current_commit_id == commit_id:
+            maybe_brs.append(os.path.basename(br))
+    if not maybe_brs:
+        logger.warning('Failed to find current RCPL')
+        return ''
+    else:
+        return maybe_brs[-1]

@@ -215,6 +215,19 @@ class Argparse_Setup:
             if self.setup:
                 self.setup.mirror_as_premirrors = parsed_args.mirror_as_premirrors
 
+        # NULL: Not specified
+        # --hotfix: Specified without a url, use the default url
+        # --hotfix=url: Use the url to download patches
+        hotfix_default_url = ''
+        if parsed_args.download_only:
+            if self.setup:
+                self.setup.download_only = parsed_args.download_only
+
+        if self.setup:
+            self.setup.hotfix = parsed_args.hotfix
+            if self.setup.hotfix == None:
+                self.setup.hotfix = hotfix_default_url
+
         if parsed_args.use_layer_groups:
             if self.setup:
                 self.setup.use_layer_groups = parsed_args.use_layer_groups
@@ -243,6 +256,10 @@ class Argparse_Setup:
         self.parser.add_argument('-mp', '--mirror-as-premirrors', help="Make the dl layers as premirrors when --mirror is specified. Use the project mirror as PREMIRRORS during the build when --mirror is not specified", action='store_true', default=False)
 
         self.parser.add_argument('--no-prime', help='Control whether to download common objects before repo sync. Default: True', action="store_true")
+
+        self.parser.add_argument('-do', '--download-only', help="Works with --hotfix, only download and unpack the patches, but not apply them.", action='store_true', default=False)
+
+        self.parser.add_argument('-hf', '--hotfix', help="Download and apply the hotfix patches.", action='store', nargs='?', default='NULL')
 
     def add_repo_options(self):
         self.repo_args = self.parser.add_argument_group('repo Settings')

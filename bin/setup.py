@@ -91,6 +91,9 @@ class Setup():
         # Make/Use the project mirror as PREMIRRORS for do_fetch
         self.mirror_as_premirrors = False
 
+        self.hotfix = False
+        self.download_only = False
+
         # Default configuration
         self.distros = [ settings.DEFAULT_DISTRO ]
         self.machines = [ settings.DEFAULT_MACHINE ]
@@ -224,6 +227,8 @@ class Setup():
         self.setup_args = " ".join(orig_args[1:])
         self.extra_group_keys = parser.extra_group_keys
 
+        if self.download_only and not self.hotfix:
+            logger.warning('--download-only has no effect since --hotfix is not used.')
 
         logger.debug('REPO_URL = %s' % self.repo_url)
         logger.debug('REPO_BRANCH = %s' % self.repo_rev)
@@ -341,6 +346,10 @@ class Setup():
                 self.make_mirror_as_premirrors()
             else:
                 self.use_mirror_as_premirrors()
+
+        if self.hotfix != 'NULL':
+            self.devel_patches = ''
+            self.do_devel_patches()
 
         self.exit(0)
 
@@ -1573,6 +1582,27 @@ class Setup():
             if not line in f.readlines():
                 f.write('\n# Use project mirror as PREMIRRORS for the build\n')
                 f.write(line)
+
+    def do_devel_patches(self):
+        logger.debug('Starting')
+        devel_patches_tool = os.path.join(os.path.dirname(sys.argv[0]), 'devel_patches.py')
+        head_branch = self.base_branch.split('_RCPL')[0]
+        if self.devel_patches:
+            url = '%s/%s_devel.tar.xz' % (self.devel_patches, head_branch)
+        elif self.hotfix:
+            current_rcpl = utils_setup.get_current_rcpl(os.path.dirname(sys.argv[0]))
+            url = '%s/%s_HOTFIX.tar.xz' % (self.hotfix, current_rcpl)
+        else:
+            logger.error('The --hotfix url is not specifeid, return...')
+            return
+        cmd = [devel_patches_tool, '-u', url]
+        if self.download_only:
+            cmd.append('--download-only')
+        try:
+            utils_setup.run_cmd(cmd, environment=self.env)
+        except Exception as e:
+            raise
+        logger.debug('Done')
 
     def update_gitignore(self):
         logger.debug('Starting')
