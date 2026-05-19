@@ -218,7 +218,7 @@ class Argparse_Setup:
         # NULL: Not specified
         # --hotfix: Specified without a url, use the default url
         # --hotfix=url: Use the url to download patches
-        hotfix_default_url = ''
+        hotfix_default_url = 'https://distro.windriver.com/dist/wrlinux/updates/lts-25'
         if parsed_args.download_only:
             if self.setup:
                 self.setup.download_only = parsed_args.download_only
