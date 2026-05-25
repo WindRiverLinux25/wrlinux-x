@@ -1591,6 +1591,9 @@ class Setup():
             url = '%s/%s_devel.tar.xz' % (self.devel_patches, head_branch)
         elif self.hotfix:
             current_rcpl = utils_setup.get_current_rcpl(os.path.dirname(sys.argv[0]))
+            if not current_rcpl:
+                logger.warning("Skipping hotfix patches since RCPL version is not found")
+                return
             url = '%s/%s_HOTFIX.tar.xz' % (self.hotfix, current_rcpl)
         else:
             logger.error('The --hotfix url is not specifeid, return...')
@@ -1601,7 +1604,8 @@ class Setup():
         try:
             utils_setup.run_cmd(cmd, environment=self.env)
         except Exception as e:
-            raise
+            logger.error('Failed to run: %s' % ' '.join(cmd))
+            return
         logger.debug('Done')
 
     def update_gitignore(self):
