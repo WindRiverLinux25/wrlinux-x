@@ -129,6 +129,7 @@ class DevPatches(object):
             subprocess.check_output(cmd, shell=True)
         else:
             logger.error(f"File '{path}' not found or unsupported format.")
+            sys.exit(1)
 
 def main():
     dev_patches = DevPatches()
