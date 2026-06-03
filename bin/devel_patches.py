@@ -25,6 +25,7 @@ class DevPatches(object):
         parser.add_argument("-u", "--url", help="Specify the url to dowload")
         parser.add_argument("-p", "--project", help="Specify the project dir", default=os.getcwd())
         parser.add_argument("-o", "--outdir", help="Specify the output dir", default=os.getcwd())
+        parser.add_argument('-do', '--download-only', help="Only download and unpack the patches, but not apply them.", action='store_true', default=False)
         parser.add_argument("-d", "--debug",
             help = "Enable debug output",
             action="store_const", const=logging.DEBUG, dest="loglevel", default=logging.INFO)
@@ -82,6 +83,9 @@ class DevPatches(object):
         subprocess.check_output(cmd, shell=True, cwd=new_path)
 
     def apply_patches(self):
+        if self.args.download_only:
+            logger.info('Skipping apply the patches since --download-only is specified')
+            return 0
         path = os.path.join(self.outdir, self.filename)
         handled = set()
         for root, dirs, files in os.walk(path):
