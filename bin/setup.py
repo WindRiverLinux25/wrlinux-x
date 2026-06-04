@@ -347,11 +347,12 @@ class Setup():
             else:
                 self.use_mirror_as_premirrors()
 
+        retval = 0
         if self.hotfix != 'NULL':
             self.devel_patches = ''
-            self.do_devel_patches()
+            retval = self.do_devel_patches()
 
-        self.exit(0)
+        self.exit(retval)
 
     def check_project_path(self):
         project_dir_last = ""
@@ -1593,11 +1594,11 @@ class Setup():
             current_rcpl = utils_setup.get_current_rcpl(os.path.dirname(sys.argv[0]))
             if not current_rcpl:
                 logger.warning("Skipping hotfix patches since RCPL version is not found")
-                return
+                return 1
             url = '%s/%s_HOTFIX.tar.xz' % (self.hotfix, current_rcpl)
         else:
             logger.error('The --hotfix url is not specifeid, return...')
-            return
+            return 1
         cmd = [devel_patches_tool, '-u', url]
         if self.download_only:
             cmd.append('--download-only')
@@ -1605,8 +1606,10 @@ class Setup():
             utils_setup.run_cmd(cmd, environment=self.env)
         except Exception as e:
             logger.error('Failed to run: %s' % ' '.join(cmd))
-            return
+            return 1
         logger.debug('Done')
+
+        return 0
 
     def update_gitignore(self):
         logger.debug('Starting')
